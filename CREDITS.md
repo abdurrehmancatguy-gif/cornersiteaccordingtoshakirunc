@@ -12,9 +12,9 @@ attribution required. Credited here anyway.
 | `piece-2.jpg` | [7814730](https://www.pexels.com/photo/7814730/) | no label |
 | `piece-3.jpg` | [34089129](https://www.pexels.com/photo/34089129/) | no label |
 | `piece-4.jpg` | [8361545](https://www.pexels.com/photo/8361545/) | blank label |
-| `piece-5.jpg` | [37171281](https://www.pexels.com/photo/37171281/) | no label |
+| `piece-5.jpg` | [6915111](https://www.pexels.com/photo/6915111/) | no label |
 | `piece-6.jpg` | [8624586](https://www.pexels.com/photo/8624586/) | no label |
-| `kiosk.jpg` | [33257665](https://www.pexels.com/photo/33257665/) | no signage |
+| `kiosk.jpg` | [8450240](https://www.pexels.com/photo/8450240/) | tags illegible |
 | `oud.jpg` | [17860048](https://www.pexels.com/photo/17860048/) | no label |
 | `case.jpg` | [4271691](https://www.pexels.com/photo/4271691/) | no label |
 

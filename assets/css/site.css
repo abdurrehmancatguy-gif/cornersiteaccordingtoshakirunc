@@ -412,30 +412,42 @@ ul,ol{margin:0;padding:0;list-style:none}
 .details a{border-bottom:1px solid var(--rule);transition:border-color .4s}
 .details a:hover{border-color:var(--gold)}
 
-/* form */
-.form{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem 2rem;align-content:start}
+/* form — sits on its own panel. Underline-only fields vanished against the
+   wallpaper, so every control now has a filled box and a standing label. */
+.form{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem 1.6rem;align-content:start;
+  padding:clamp(1.6rem,3vw,2.4rem);
+  background:linear-gradient(168deg,var(--panel-lit),var(--panel));
+  border:1px solid rgba(107,78,19,.34);
+  box-shadow:0 1px 0 rgba(255,250,236,.7),0 24px 50px -40px rgba(58,42,12,.45)}
+.form__head{grid-column:1/-1;font-family:var(--f-display);font-weight:400;
+  font-size:1.5rem;color:var(--ink);margin-bottom:.2rem;
+  padding-bottom:.9rem;border-bottom:1px solid var(--rule)}
 .hp{position:absolute;left:-9999px}
-.field{position:relative}
+.field{display:flex;flex-direction:column;gap:.5rem}
 .field--full{grid-column:1/-1}
-.field input,.field textarea,.field select{
-  width:100%;background:transparent;border:0;border-bottom:1px solid var(--rule);
-  padding:1.55rem 0 .75rem;font-family:var(--f-display);font-size:1.18rem;color:var(--ink);
-  border-radius:0;transition:border-color .45s var(--ease)}
-.field textarea{resize:vertical;line-height:1.6}
-.field select{appearance:none;cursor:pointer;
-  background-image:linear-gradient(45deg,transparent 50%,var(--gold) 50%),linear-gradient(135deg,var(--gold) 50%,transparent 50%);
-  background-position:calc(100% - 12px) 1.55rem,calc(100% - 7px) 1.55rem;
+.field label{font-size:.62rem;text-transform:uppercase;letter-spacing:.22em;
+  color:var(--gold-deep)}
+.field label em{font-style:normal;color:var(--gold)}
+.field input,.field select,.field textarea{
+  width:100%;padding:.85rem 1rem;
+  font-family:var(--f-ui);font-size:.94rem;font-weight:300;color:var(--ink);
+  background:rgba(255,252,244,.92);
+  border:1px solid rgba(107,78,19,.3);border-radius:2px;
+  transition:border-color .35s var(--ease),box-shadow .35s var(--ease),background .35s}
+.field textarea{resize:vertical;line-height:1.6;min-height:8.5rem}
+.field input::placeholder,.field textarea::placeholder{color:rgba(36,28,17,.38)}
+.field select{appearance:none;cursor:pointer;padding-right:2.4rem;
+  background-image:linear-gradient(45deg,transparent 50%,var(--gold-deep) 50%),
+                   linear-gradient(135deg,var(--gold-deep) 50%,transparent 50%);
+  background-position:calc(100% - 18px) calc(50% + 2px),calc(100% - 13px) calc(50% + 2px);
   background-size:5px 5px,5px 5px;background-repeat:no-repeat}
-.field input:focus,.field textarea:focus,.field select:focus{outline:0;border-color:var(--gold)}
-.field label{position:absolute;left:0;top:1.45rem;pointer-events:none;
-  font-size:.95rem;color:var(--ink-faint);
-  transition:top .4s var(--ease),font-size .4s var(--ease),letter-spacing .4s,color .4s}
-.field label em{font-style:normal;opacity:.6}
-.field input:focus+label,.field input:not(:placeholder-shown)+label,
-.field textarea:focus+label,.field textarea:not(:placeholder-shown)+label,
-.field label.lifted{
-  top:0;font-size:.6rem;text-transform:uppercase;letter-spacing:.24em;color:var(--gold-deep)}
-.form__foot{grid-column:1/-1;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-top:.6rem}
+.field input:hover,.field select:hover,.field textarea:hover{border-color:rgba(107,78,19,.5)}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:0;border-color:var(--gold);background:#FFFDF7;
+  box-shadow:0 0 0 3px rgba(184,145,58,.16)}
+.field input:user-invalid,.field textarea:user-invalid{border-color:#9B4A22}
+.form__foot{grid-column:1/-1;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;
+  margin-top:.4rem;padding-top:1.3rem;border-top:1px solid var(--rule)}
 .form__note{font-size:.72rem;letter-spacing:.1em;color:var(--gold-deep)}
 
 /* map */
