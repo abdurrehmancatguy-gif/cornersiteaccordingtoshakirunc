@@ -9,7 +9,7 @@ from PIL import Image
 import numpy as np, os, subprocess, tempfile
 
 SRC = '/Users/ajoomama/Downloads/BGS LOGO.pdf'
-OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'assets/brand/')
+OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets/brand/')
 os.makedirs(OUT, exist_ok=True)
 
 tmp = tempfile.mkdtemp()
