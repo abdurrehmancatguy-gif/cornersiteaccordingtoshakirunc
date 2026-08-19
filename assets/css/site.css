@@ -29,6 +29,9 @@
   --foil-text:linear-gradient(112deg,
       #5C420E 0%, #8A6718 18%, #B8913A 38%, #7A5A14 56%,
       #A6811F 76%, #5C420E 100%);
+  --foil-sweep:linear-gradient(112deg,
+      #6B4E13 0%, #8A6718 14%, #B8913A 30%, #EFDFA8 42%,
+      #FFF9E6 48%, #EFDFA8 54%, #B8913A 68%, #8A6718 84%, #6B4E13 100%);
   --foil:linear-gradient(115deg,
       #5C420E 0%, #8A6718 12%, #C9A54A 28%, #F2E3B0 40%,
       #C9A54A 54%, #8A6718 72%, #5C420E 88%, #B8913A 100%);
@@ -121,7 +124,7 @@ ul,ol{margin:0;padding:0;list-style:none}
   box-shadow:inset 0 1px 8px rgba(0,0,0,.65),0 8px 22px -14px rgba(30,20,4,.7)}
 .mark{
   display:block;width:2.15rem;aspect-ratio:1;
-  background:var(--foil);background-size:220% 220%;
+  background:var(--foil-sweep);background-size:300% 100%;
   -webkit-mask:url("../brand/logo-mark.png") center/contain no-repeat;
           mask:url("../brand/logo-mark.png") center/contain no-repeat;
 }
@@ -129,12 +132,12 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 .foot__lockup{
   display:block;width:min(15rem,44vw);aspect-ratio:2302/858;
-  background:var(--foil);background-size:220% 220%;
+  background:var(--foil-sweep);background-size:300% 100%;
   -webkit-mask:url("../brand/logo-lockup.png") center/contain no-repeat;
           mask:url("../brand/logo-lockup.png") center/contain no-repeat;
 }
-@keyframes foil{0%{background-position:0% 50%}100%{background-position:200% 50%}}
-.is-loaded .mark,.is-loaded .foot__lockup{animation:foil 9s var(--ease) infinite alternate}
+@keyframes foil{0%{background-position:100% 50%}100%{background-position:-100% 50%}}
+.is-loaded .mark,.is-loaded .foot__lockup{animation:foil 5.5s linear infinite}
 
 /* ─────────────────────────────────────────────────────────── typography */
 .eyebrow{
@@ -547,3 +550,38 @@ ul,ol{margin:0;padding:0;list-style:none}
   transform:rotate(90deg)}
 .closebtn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media (max-width:760px){.closebtn{width:2.3rem;height:2.3rem}}
+
+/* ─────────────────────────────────────────────────────── floating whatsapp */
+.wa{position:fixed;z-index:8500;display:grid;place-items:center;
+  right:clamp(1rem,2.5vw,2rem);
+  bottom:calc(clamp(1rem,2.5vw,2rem) + env(safe-area-inset-bottom,0px));
+  width:3.4rem;height:3.4rem;border-radius:50%;
+  background:radial-gradient(circle at 32% 26%,#2B2116 0%,#0F0B06 74%);
+  border:1px solid rgba(224,196,132,.36);
+  box-shadow:0 12px 28px -14px rgba(28,18,3,.75),inset 0 1px 6px rgba(0,0,0,.6);
+  transition:transform .5s var(--ease),border-color .5s var(--ease)}
+.wa svg{position:relative;z-index:1;width:1.45rem;height:1.45rem;fill:var(--gold-lit);
+  transition:fill .5s var(--ease)}
+.wa:hover{transform:translateY(-3px)}
+.wa:hover svg{fill:var(--gold-pale)}
+.wa:hover{border-color:var(--gold-lit)}
+.wa:focus-visible{outline:2px solid var(--gold-lit);outline-offset:4px}
+
+/* a slow ring, so it is noticed without nagging */
+.wa__ring{position:absolute;inset:-1px;border-radius:50%;
+  border:1px solid rgba(224,196,132,.55);
+  animation:waring 3.6s var(--ease) infinite}
+@keyframes waring{
+  0%{transform:scale(1);opacity:.55}
+  70%{transform:scale(1.42);opacity:0}
+  100%{transform:scale(1.42);opacity:0}}
+
+.wa__label{position:absolute;right:calc(100% + .7rem);white-space:nowrap;
+  padding:.5rem .85rem;border-radius:2px;
+  background:#15100A;border:1px solid rgba(224,196,132,.28);color:var(--gold-pale);
+  font-size:.6rem;text-transform:uppercase;letter-spacing:.2em;
+  opacity:0;transform:translateX(6px);pointer-events:none;
+  transition:opacity .45s var(--ease),transform .45s var(--ease)}
+.wa:hover .wa__label,.wa:focus-visible .wa__label{opacity:1;transform:none}
+@media (max-width:760px){.wa{width:3rem;height:3rem}.wa__label{display:none}}
+@media (prefers-reduced-motion:reduce){.wa__ring{animation:none;opacity:.3}}
