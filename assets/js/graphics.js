@@ -124,16 +124,8 @@ window.BGSArt = (() => {
       cap.appendChild(el('ellipse', { cx: CX, cy: 84, rx: 34 - i * 6.3, ry: 34, class: 'b-hair' }));
     cap.appendChild(el('path', { d: `M${CX - 34} 84 L${CX + 34} 84`, class: 'b-hair' }));
     cap.appendChild(el('rect', { x: CX - 36, y: 104, width: 72, height: 12, rx: 2, class: 'b-gold' }));
-    cap.appendChild(el('path', { d: `M${CX - 8} 48 L${CX} 38 L${CX + 8} 48 L${CX} 58 Z`, class: 'b-gold' }));
+    cap.appendChild(el('circle', { cx: CX, cy: 46, r: 6, class: 'b-gold' }));
     g.appendChild(cap);
-
-    /* the diamond, seated under the dome */
-    const dia = el('g', { class: 'b-diamond' });
-    dia.appendChild(el('path', { d: `M${CX - 20} 74 L${CX + 20} 74 L${CX + 11} 98 L${CX - 11} 98 Z`, class: 'b-gold' }));
-    dia.appendChild(el('path', { d: `M${CX - 20} 74 L${CX} 66 L${CX + 20} 74`, class: 'b-gold' }));
-    dia.appendChild(el('path', { d: `M${CX - 20} 74 L${CX} 98 M${CX + 20} 74 L${CX} 98 M${CX - 8} 74 L${CX - 4} 98 M${CX + 8} 74 L${CX + 4} 98`, class: 'b-hair' }));
-    dia.appendChild(el('path', { d: `M${CX} 52 L${CX + 3} 60 L${CX + 11} 63 L${CX + 3} 66 L${CX} 74 L${CX - 3} 66 L${CX - 11} 63 L${CX - 3} 60 Z`, class: 'b-spark' }));
-    g.appendChild(dia);
 
     /* the motif this piece is named for */
     if (CRESTS[name]) {
@@ -143,22 +135,14 @@ window.BGSArt = (() => {
       g.appendChild(c);
     }
 
-    /* plaque + the 2.5 g bar on its drawer */
+    /* a plain label band across the lower body */
     if (detail) {
-      const py = 360, pw = 92, ph = 104;
-      const plaque = el('g', { class: 'b-plaque' });
-      plaque.appendChild(el('rect', { x: CX - pw/2, y: py, width: pw, height: ph, rx: 4, class: 'b-gold' }));
-      plaque.appendChild(el('rect', { x: CX - pw/2 + 7, y: py + 7, width: pw - 14, height: ph - 14, rx: 2, class: 'b-hair' }));
-      for (const [dx, dy] of [[-1,-1],[1,-1],[-1,1],[1,1]])
-        plaque.appendChild(el('circle', { cx: CX + dx * (pw/2 - 13), cy: py + ph/2 + dy * (ph/2 - 13), r: 2.4, class: 'b-gold' }));
-      g.appendChild(plaque);
-
-      const bar = el('g', { class: 'b-bar' });
-      bar.appendChild(el('rect', { x: CX - 26, y: py + 24, width: 52, height: 58, rx: 3, class: 'b-bar-body' }));
-      bar.appendChild(el('text', { x: CX, y: py + 44, class: 'b-t b-t--lg' })).textContent = 'BGS';
-      bar.appendChild(el('text', { x: CX, y: py + 60, class: 'b-t' })).textContent = '2.5 g';
-      bar.appendChild(el('text', { x: CX, y: py + 72, class: 'b-t' })).textContent = '999.9';
-      g.appendChild(bar);
+      const ly = 396;
+      const band = el('g', { class: 'b-label' });
+      band.appendChild(el('rect', { x: CX - 52, y: ly, width: 104, height: 40, rx: 2, class: 'b-gold' }));
+      band.appendChild(el('rect', { x: CX - 46, y: ly + 5, width: 92, height: 30, rx: 1, class: 'b-hair' }));
+      band.appendChild(el('text', { x: CX, y: ly + 25, class: 'b-t b-t--lg' })).textContent = 'BGS';
+      g.appendChild(band);
     }
 
     /* foot + tola label */
@@ -174,9 +158,9 @@ window.BGSArt = (() => {
      Hypotrochoid rosettes in gold hairline — the geometry of the monogram and
      of the engraving cut into the crystal. */
   const RINGS = [
-    { n: 68, r1: .50, r2: .56, spin:  0.000015, a: .30, w: .55 },
-    { n: 46, r1: .34, r2: .42, spin: -0.000025, a: .24, w: .50 },
-    { n: 34, r1: .26, r2: .32, spin:  0.000035, a: .18, w: .50 }
+    { n: 68, r1: .50, r2: .56, spin:  0.000015, a: .40, w: .6 },
+    { n: 46, r1: .34, r2: .42, spin: -0.000025, a: .32, w: .55 },
+    { n: 34, r1: .26, r2: .32, spin:  0.000035, a: .26, w: .55 }
   ];
 
   function bake(cfg, w, h, hue) {
@@ -203,7 +187,7 @@ window.BGSArt = (() => {
     return c;
   }
 
-  function guilloche(canvas, { seed = 0, hue = '126,95,30', rings = RINGS } = {}) {
+  function guilloche(canvas, { seed = 0, hue = '107,78,19', rings = RINGS } = {}) {
     const ctx = canvas.getContext('2d');
     // vary petal count per instance, but only across ratios that stay closed
     // and symmetric — mutating R freely produces spiky, unbalanced forms
@@ -279,50 +263,6 @@ window.BGSArt = (() => {
     return svg;
   }
 
-  /* ── exploded parts ─────────────────────────────────────────────────────
-     The five pieces of the easy-remove cartridge, drawn as a row. */
-  function exploded(svg) {
-    const parts = [
-      { label: 'Outer frame',  ornate: true },
-      { label: 'Clear window', glass: true },
-      { label: 'Cartridge',    dark: true },
-      { label: 'The bar',      gold: true },
-      { label: 'Back plate',   glass: true }
-    ];
-    const w = 150, gap = 44, h = 200;
-    const W = parts.length * w + (parts.length - 1) * gap, H = h + 54;
-    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
-    svg.setAttribute('fill', 'none');
-    svg.innerHTML = '';
-
-    parts.forEach((p, i) => {
-      const x = i * (w + gap);
-      const g = el('g', { class: 'x-part', style: `--i:${i}` });
-      g.appendChild(el('rect', { x: x + 14, y: 16, width: w - 28, height: h - 32, rx: 6,
-                                 class: p.gold ? 'x-gold' : p.dark ? 'x-dark' : 'x-line' }));
-      if (p.ornate) {
-        g.appendChild(el('rect', { x: x + 26, y: 28, width: w - 52, height: h - 56, rx: 4, class: 'x-hair' }));
-        for (const [dx, dy] of [[-1,-1],[1,-1],[-1,1],[1,1]])
-          g.appendChild(el('circle', { cx: x + w/2 + dx * (w/2 - 30), cy: h/2 + dy * (h/2 - 34), r: 3, class: 'x-gold' }));
-      }
-      if (p.glass) for (let k = 0; k < 4; k++)
-        g.appendChild(el('path', { d: `M${x + 24 + k * 26} 26 L${x + 8 + k * 26} ${h - 22}`, class: 'x-hair' }));
-      if (p.dark) for (let k = 0; k < 3; k++)
-        g.appendChild(el('circle', { cx: x + w/2, cy: 54 + k * 44, r: 5, class: 'x-hair' }));
-      if (p.gold) {
-        g.appendChild(el('text', { x: x + w/2, y: 82,  class: 'b-t b-t--lg' })).textContent = 'BGS';
-        g.appendChild(el('text', { x: x + w/2, y: 108, class: 'b-t' })).textContent = '2.5 g';
-        g.appendChild(el('text', { x: x + w/2, y: 126, class: 'b-t' })).textContent = 'FINE GOLD';
-        g.appendChild(el('text', { x: x + w/2, y: 144, class: 'b-t' })).textContent = '999.9';
-      }
-      g.appendChild(el('text', { x: x + w/2, y: H - 14, class: 'x-label' })).textContent = p.label;
-      if (i < parts.length - 1)
-        svg.appendChild(el('path', { d: `M${x + w + 10} ${h/2} L${x + w + gap - 10} ${h/2}`, class: 'x-hair' }));
-      svg.appendChild(g);
-    });
-    return svg;
-  }
-
   /* ── presentation case ──────────────────────────────────────────────────
      Lid open, monogram on the inside face, bottle and oud dish seated. */
   function presentationCase(svg) {
@@ -367,5 +307,5 @@ window.BGSArt = (() => {
     return svg;
   }
 
-  return { bottle, guilloche, kiosk, exploded, presentationCase, PROFILES };
+  return { bottle, guilloche, kiosk, presentationCase, PROFILES };
 })();

@@ -19,7 +19,6 @@
     $$('[data-bottle]').forEach(svg =>
       Art.bottle(svg, svg.dataset.bottle, { detail: !svg.hasAttribute('data-plain') }));
     $$('[data-kiosk]').forEach(Art.kiosk);
-    $$('[data-exploded]').forEach(Art.exploded);
     $$('[data-case]').forEach(Art.presentationCase);
     if (!calm) $$('[data-guilloche]').forEach(c =>
       Art.guilloche(c, { seed: +c.dataset.seed || 0 }));
