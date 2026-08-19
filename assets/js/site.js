@@ -17,15 +17,31 @@
     $$('[data-guilloche]').forEach(c => Art.guilloche(c, { seed: +c.dataset.seed || 0 }));
 
   /* ── 2. scroll reveals + plate wipes ──────────────────────────────────── */
+  /* An artframe only lights once its photograph has actually decoded.
+     Adding the class on intersection alone runs the transition against a
+     frame that has nothing in it yet, so the picture appears at the end of
+     the fade rather than through it — which reads as a pop. */
+  function light(el) {
+    const img = el.querySelector('img');
+    if (!img) return el.classList.add('drawn');
+    const go = () => el.classList.add('drawn');
+    const ready = () => (img.decode ? img.decode().catch(() => {}) : Promise.resolve()).then(go);
+    if (img.complete && img.naturalWidth) ready();
+    else {
+      img.addEventListener('load', ready, { once: true });
+      img.addEventListener('error', go, { once: true });
+    }
+  }
+
   const io = new IntersectionObserver((entries) => {
     for (const e of entries) {
       if (!e.isIntersecting) continue;
       const t = e.target;
       if (t.classList.contains('reveal')) t.classList.add('in');
-      if (t.classList.contains('artframe')) t.classList.add('drawn');
-      io.unobserve(e.target);
+      if (t.classList.contains('artframe')) light(t);
+      io.unobserve(t);
     }
-  }, { rootMargin: '0px 0px -12% 0px', threshold: 0.12 });
+  }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
 
   $$('.reveal, .artframe').forEach(el => io.observe(el));
 

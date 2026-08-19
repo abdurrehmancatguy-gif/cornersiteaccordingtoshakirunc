@@ -243,8 +243,14 @@ ul,ol{margin:0;padding:0;list-style:none}
 .artframe::after{content:"";position:absolute;inset:7px;pointer-events:none;
   border:1px solid rgba(224,196,132,.28);z-index:2}
 .artframe img{width:100%;height:100%;object-fit:cover;display:block;
-  transform:scale(1.05);transition:transform 1.6s var(--ease),opacity 1.2s var(--ease);opacity:0}
-.artframe.drawn img{transform:none;opacity:1}
+  opacity:0;transform:scale(1.08);
+  transition:opacity 1.5s cubic-bezier(.33,1,.68,1),transform 2.1s var(--ease)}
+.artframe.drawn img{opacity:1;transform:none}
+/* an ivory curtain draws back over the photograph as it fades up */
+.artframe::before{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,var(--panel-lit),var(--panel));
+  transform-origin:bottom;transition:transform 1.5s var(--ease),opacity 1.5s var(--ease)}
+.artframe.drawn::before{transform:scaleY(0);opacity:0}
 .artframe--hero,.artframe--tall,.artframe--card{aspect-ratio:4/5}
 .artframe--wide{aspect-ratio:16/7.2}
 .artframe--case{aspect-ratio:5/4}

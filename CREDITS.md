@@ -6,20 +6,24 @@ All photographs are stock from [Pexels](https://www.pexels.com), used under the
 [Pexels licence](https://www.pexels.com/license/) — free for commercial use, no
 attribution required. Credited here anyway.
 
-| File | Pexels photo |
-|---|---|
-| `hero.jpg` | [16239693](https://www.pexels.com/photo/16239693/) |
-| `piece-1.jpg` | [7702669](https://www.pexels.com/photo/7702669/) |
-| `piece-2.jpg` | [7814730](https://www.pexels.com/photo/7814730/) |
-| `piece-3.jpg` | [34089129](https://www.pexels.com/photo/34089129/) |
-| `piece-4.jpg` | [36779953](https://www.pexels.com/photo/36779953/) |
-| `piece-5.jpg` | [36389336](https://www.pexels.com/photo/36389336/) |
-| `piece-6.jpg` | [8624586](https://www.pexels.com/photo/8624586/) |
-| `kiosk.jpg` | [33257665](https://www.pexels.com/photo/33257665/) |
-| `oud.jpg` | [17860048](https://www.pexels.com/photo/17860048/) |
-| `case.jpg` | [33629664](https://www.pexels.com/photo/33629664/) |
+| File | Pexels photo | Checked |
+|---|---|---|
+| `hero.jpg` | [18708750](https://www.pexels.com/photo/18708750/) | no label |
+| `piece-1.jpg` | [7702669](https://www.pexels.com/photo/7702669/) | no label |
+| `piece-2.jpg` | [7814730](https://www.pexels.com/photo/7814730/) | no label |
+| `piece-3.jpg` | [34089129](https://www.pexels.com/photo/34089129/) | no label |
+| `piece-4.jpg` | [8361545](https://www.pexels.com/photo/8361545/) | blank label |
+| `piece-5.jpg` | [37171281](https://www.pexels.com/photo/37171281/) | no label |
+| `piece-6.jpg` | [8624586](https://www.pexels.com/photo/8624586/) | no label |
+| `kiosk.jpg` | [33257665](https://www.pexels.com/photo/33257665/) | no signage |
+| `oud.jpg` | [17860048](https://www.pexels.com/photo/17860048/) | no label |
+| `case.jpg` | [4271691](https://www.pexels.com/photo/4271691/) | no label |
 
-Shots carrying legible third-party brand names were excluded on purpose.
+Every image above was opened at full resolution and checked for third-party
+marks before use. Shots carrying a legible brand name were rejected — among
+them an "AFFINESSENCE PARIS" bottle, an etched "24", a "MARC JACOBS" cap and a
+"GOLDEN BLACK" oud. A competitor's mark on a BGS product card is both
+misleading and a trademark problem.
 
 **These are placeholders.** They are generic fragrance and retail stock, not BGS
 Corner product. The six pieces in the collection are named for forms the stock

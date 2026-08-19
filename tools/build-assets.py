@@ -17,16 +17,16 @@ os.makedirs(OUT, exist_ok=True)
 
 # (pexels id, output name, target aspect w/h, output width)
 JOBS = [
-    ('16239693', 'hero.jpg',        4/5,  1100),
+    ('18708750', 'hero.jpg',        4/5,  1100),
     ('7702669',  'piece-1.jpg',     4/5,   800),
     ('7814730',  'piece-2.jpg',     4/5,   800),
     ('34089129', 'piece-3.jpg',     4/5,   800),
-    ('36779953', 'piece-4.jpg',     4/5,   800),
-    ('36389336', 'piece-5.jpg',     4/5,   800),
+    ('8361545',  'piece-4.jpg',     4/5,   800),
+    ('37171281', 'piece-5.jpg',     4/5,   800),
     ('8624586',  'piece-6.jpg',     4/5,   800),
     ('33257665', 'kiosk.jpg',    16/7.2,  1700),
     ('17860048', 'oud.jpg',         4/5,  1000),
-    ('33629664', 'case.jpg',        4/5,  1000),
+    ('4271691',  'case.jpg',        4/5,  1000),
 ]
 
 def crop_to(im, aspect):
