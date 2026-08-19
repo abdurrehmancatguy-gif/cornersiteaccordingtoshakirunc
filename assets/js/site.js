@@ -11,40 +11,10 @@
   const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const fine = matchMedia('(pointer: fine)').matches;
 
-  /* ── 1. build the drawn artwork ─────────────────────────────────────────
-     Nothing here is a photograph: bottle silhouettes, the kiosk elevation,
-     the exploded cartridge and the presentation case are all generated. */
+  /* ── 1. ambient guilloché ────────────────────────────────────────────── */
   const Art = window.BGSArt;
-  if (Art) {
-    $$('[data-bottle]').forEach(svg =>
-      Art.bottle(svg, svg.dataset.bottle, { detail: !svg.hasAttribute('data-plain') }));
-    $$('[data-kiosk]').forEach(Art.kiosk);
-    $$('[data-case]').forEach(Art.presentationCase);
-    if (!calm) $$('[data-guilloche]').forEach(c =>
-      Art.guilloche(c, { seed: +c.dataset.seed || 0 }));
-
-    /* Measure every stroke so it can draw itself on, and stagger the order so
-       the bottle assembles from the body outwards rather than all at once. */
-    $$('.artframe svg').forEach(svg => {
-      const shapes = $$('path, circle, ellipse, rect, line', svg);
-      shapes.forEach((sh, i) => {
-        if (sh.closest('.b-hatch, .b-fill, .k-glow')) { sh.setAttribute('data-fade', ''); return; }
-        let len = 0;
-        try { len = sh.getTotalLength(); } catch { /* not measurable */ }
-        if (!len || len > 4000) { sh.setAttribute('data-fade', ''); }
-        else {
-          sh.setAttribute('data-draw', '');
-          sh.style.setProperty('--len', len.toFixed(1));
-          sh.style.strokeDasharray = len.toFixed(1);
-        }
-        sh.style.setProperty('--d', Math.min(i * 0.012, 0.9).toFixed(3) + 's');
-      });
-      $$('text', svg).forEach((t, i) => {
-        t.setAttribute('data-fade', '');
-        t.style.setProperty('--d', (0.7 + i * 0.06).toFixed(2) + 's');
-      });
-    });
-  }
+  if (Art && !calm)
+    $$('[data-guilloche]').forEach(c => Art.guilloche(c, { seed: +c.dataset.seed || 0 }));
 
   /* ── 2. scroll reveals + plate wipes ──────────────────────────────────── */
   const io = new IntersectionObserver((entries) => {
@@ -105,7 +75,6 @@
   const rVal   = $('[data-readout-val]');
   const rUnit  = $('[data-readout-unit]');
   const readout = rVal?.closest('.readout');
-  const demo = $('[data-demo]');
 
   if (steps.length && readout) {
     let active = -1;
@@ -118,8 +87,6 @@
         if (d < dist) { dist = d; best = i; }
       });
       steps.forEach((s, i) => s.classList.toggle('dim', i !== best));
-      if (demo) demo.className.baseVal =
-        `bottle bottle--demo s${best + 1}`;
       if (best === active) return;
       active = best;
       readout.classList.add('swap');

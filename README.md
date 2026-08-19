@@ -16,34 +16,46 @@ python3 -m http.server 4173
 index.html
 assets/
   css/site.css      styling
-  js/graphics.js    the drawn artwork — bottles, guilloche, kiosk, case
+  js/graphics.js    the guilloche medallions
   js/site.js        motion, scroll behaviour, form
   brand/            logo masks (white ink + alpha, tinted via CSS mask-image)
+  img/              photography + the damask wallpaper
 tools/
   build-brand.py    regenerates brand/ from the source logo PDF
-  shot.mjs          full-page screenshots via the Chrome DevTools Protocol
+  build-assets.py    crops and compresses the photography
+  build-wallpaper.py generates the damask tile
+  build-legal.py     renders terms.html and privacy.html
+  shot.mjs           full-page screenshots via the Chrome DevTools Protocol
 ```
 
 ## Artwork
 
-There is no photography on this site. Every product visual is generated at
-runtime by `assets/js/graphics.js`:
+- **Photography** is stock from Pexels — see `CREDITS.md`. It is placeholder
+  imagery, not BGS Corner product.
+- **The wallpaper** (`assets/img/damask.svg`) is a generated seamless damask;
+  rebuild it with `tools/build-wallpaper.py`.
+- **The guilloche medallions** are engine-turned rosettes drawn at runtime by
+  `assets/js/graphics.js` — circles whose centres ride a circle, baked once per
+  size then composited per frame.
+- **The brand mark** is extracted from the supplied logo PDF by
+  `tools/build-brand.py`, as a white-ink alpha mask so CSS can tint it. It is
+  always placed on a dark plate so it reads.
 
-- **Bottles** come from one factory. Each piece is a `[t, halfWidth]` profile
-  run through a Catmull-Rom spline, plus an abstract heraldic device in a
-  vesica cartouche. Add a piece by adding a profile and a crest.
-- **Guilloche** fields are engine-turned rosettes — circles whose centres ride
-  a circle — baked once per size, then composited per frame.
-- **The kiosk**, the exploded cartridge and the presentation case are line
-  drawings built from the same primitives.
+## Legal pages
 
-Strokes measure themselves with `getTotalLength()` on first view and draw
-themselves on. The four concept steps drive the demo bottle: the gold bar
-slides out of its plaque, the globe cap lifts, the diamond appears.
+`terms.html` and `privacy.html` are generated from `tools/terms.txt` and
+`tools/privacy.txt` by `tools/build-legal.py`. Edit the text files, re-run the
+script — do not hand-edit the HTML.
 
 ## Before launch
 
-Search the HTML for `PLACEHOLDER` — the business hours, phone, email, address
-and the map's `q=` value all need the real details. The form posts in the
-Netlify Forms shape and falls back to opening a mail draft if the host is not
-handling forms.
+Contact details, hours and the map carry the real values taken from
+bgscorner.com. Two things still need a decision:
+
+1. **Terms clause 7** still reads "within [7/14/30] days" — pick the number.
+2. **The photography is stock.** Swap `assets/img/piece-*.jpg` for your own
+   product shots before this goes to customers; the six pieces are named for
+   forms the stock images do not show.
+
+The form posts in the Netlify Forms shape and falls back to opening a mail
+draft if the host is not handling forms.
