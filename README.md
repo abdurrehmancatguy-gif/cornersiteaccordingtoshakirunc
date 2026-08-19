@@ -16,13 +16,34 @@ python3 -m http.server 4173
 index.html
 assets/
   css/site.css      styling
-  js/site.js        motion + scroll behaviour
+  js/graphics.js    the drawn artwork — bottles, guilloche, kiosk, case
+  js/site.js        motion, scroll behaviour, form
   brand/            logo masks (white ink + alpha, tinted via CSS mask-image)
-  img/              product photography, web-optimised
 tools/
   build-brand.py    regenerates brand/ from the source logo PDF
-  build-assets.py   regenerates img/ from the source photography
+  shot.mjs          full-page screenshots via the Chrome DevTools Protocol
 ```
 
-The two scripts in `tools/` read from local source folders outside the repo and are
-only needed when the source artwork changes.
+## Artwork
+
+There is no photography on this site. Every product visual is generated at
+runtime by `assets/js/graphics.js`:
+
+- **Bottles** come from one factory. Each piece is a `[t, halfWidth]` profile
+  run through a Catmull-Rom spline, plus an abstract heraldic device in a
+  vesica cartouche. Add a piece by adding a profile and a crest.
+- **Guilloche** fields are engine-turned rosettes — circles whose centres ride
+  a circle — baked once per size, then composited per frame.
+- **The kiosk**, the exploded cartridge and the presentation case are line
+  drawings built from the same primitives.
+
+Strokes measure themselves with `getTotalLength()` on first view and draw
+themselves on. The four concept steps drive the demo bottle: the gold bar
+slides out of its plaque, the globe cap lifts, the diamond appears.
+
+## Before launch
+
+Search the HTML for `PLACEHOLDER` — the business hours, phone, email, address
+and the map's `q=` value all need the real details. The form posts in the
+Netlify Forms shape and falls back to opening a mail draft if the host is not
+handling forms.
