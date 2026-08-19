@@ -30,8 +30,11 @@ tools/
 
 ## Artwork
 
-- **Photography** is stock from Pexels — see `CREDITS.md`. It is placeholder
-  imagery, not BGS Corner product.
+- **The hero bottle** is drawn, not photographed. `heroBottle()` builds one
+  closed silhouette so a single highlight can travel the whole contour without
+  a seam; lengths are measured with `getTotalLength()` at build time.
+- **Photography** elsewhere is stock from Pexels — see `CREDITS.md`. It is
+  placeholder imagery, not BGS Corner product.
 - **The wallpaper** (`assets/img/damask.svg`) is a generated seamless damask;
   rebuild it with `tools/build-wallpaper.py`.
 - **The guilloche medallions** are engine-turned rosettes drawn at runtime by

@@ -13,13 +13,63 @@ window.BGSArt = (() => {
     return e;
   };
 
+
+  /* ── hero bottle ────────────────────────────────────────────────────────
+     One continuous silhouette so a single highlight can travel the whole
+     contour without seams, plus a few interior lines for the collar, the
+     stopper facets and the label. */
+  // body and neck as one closed contour, so a single highlight can travel it
+  const SILHOUETTE =
+    'M137 96 L137 134 C137 158 100 176 88 224 C78 264 78 330 88 372 ' +
+    'C95 402 112 420 137 424 L163 424 C188 420 205 402 212 372 ' +
+    'C222 330 222 264 212 224 C200 176 163 158 163 134 L163 96 Z';
+
+  const STOPPER = 'M150 25 A27 27 0 1 1 149.9 25 Z';
+
+  const DETAIL = [
+    'M132 80 L168 80 L168 96 L132 96 Z',            // collar
+    'M141 80 L140 96 M150 80 L150 96 M159 80 L160 96',
+    'M126 40 C136 32 164 32 174 40',                // stopper facets
+    'M123 52 L177 52',
+    'M150 25 L150 79',
+    'M112 296 L188 296 L188 356 L112 356 Z',        // label
+    'M122 312 L178 312 M122 340 L178 340',
+    'M96 232 C120 218 180 218 204 232',             // shoulder
+  ];
+
+  function heroBottle(svg) {
+    svg.setAttribute('viewBox', '0 0 300 460');
+    svg.setAttribute('fill', 'none');
+    svg.innerHTML = '';
+
+    const g = el('g', { class: 'hb' });
+    svg.appendChild(g);
+
+    DETAIL.forEach(d => g.appendChild(el('path', { d, class: 'hb-detail' })));
+    g.appendChild(el('path', { d: STOPPER, class: 'hb-base' }));
+    g.appendChild(el('path', { d: SILHOUETTE, class: 'hb-base' }));
+    g.appendChild(el('path', { d: SILHOUETTE, class: 'hb-trace' }));
+    g.appendChild(el('path', { d: STOPPER, class: 'hb-trace hb-trace--stopper' }));
+
+    // measure once so the draw-on and the travelling highlight are exact
+    svg.querySelectorAll('path').forEach((path, i) => {
+      const len = path.getTotalLength();
+      path.style.setProperty('--len', len.toFixed(1));
+      path.style.setProperty('--d', (i * 0.09).toFixed(2) + 's');
+    });
+    return svg;
+  }
+
   /* ── guilloché field ────────────────────────────────────────────────────
      Hypotrochoid rosettes in gold hairline — the geometry of the monogram and
      of the engraving cut into the crystal. */
+  // A circle of radius r2 centred at distance r1 never comes closer to the
+  // middle than |r2 - r1|, so unequal values always leave a clear pinhole
+  // there. The second family sets them equal: every curve passes exactly
+  // through the centre and closes it.
   const RINGS = [
-    { n: 68, r1: .50, r2: .56, spin:  0.000015, a: .40, w: .6 },
-    { n: 46, r1: .34, r2: .42, spin: -0.000025, a: .32, w: .55 },
-    { n: 34, r1: .26, r2: .32, spin:  0.000035, a: .26, w: .55 }
+    { n: 68, r1: .50, r2: .56, spin:  0.000015, a: .30, w: .55 },
+    { n: 46, r1: .38, r2: .38, spin: -0.000025, a: .22, w: .50 }
   ];
 
   function bake(cfg, w, h, hue) {
@@ -83,5 +133,5 @@ window.BGSArt = (() => {
     return resize;
   }
 
-  return { guilloche };
+  return { guilloche, heroBottle };
 })();

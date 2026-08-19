@@ -13,8 +13,10 @@
 
   /* ── 1. ambient guilloché ────────────────────────────────────────────── */
   const Art = window.BGSArt;
-  if (Art && !calm)
-    $$('[data-guilloche]').forEach(c => Art.guilloche(c, { seed: +c.dataset.seed || 0 }));
+  if (Art) {
+    $$('[data-herobottle]').forEach(Art.heroBottle);
+    if (!calm) $$('[data-guilloche]').forEach(c => Art.guilloche(c, { seed: +c.dataset.seed || 0 }));
+  }
 
   /* ── 2. scroll reveals + plate wipes ──────────────────────────────────── */
   /* An artframe only lights once its photograph has actually decoded.
@@ -23,7 +25,13 @@
      the fade rather than through it — which reads as a pop. */
   function light(el) {
     const img = el.querySelector('img');
-    if (!img) return el.classList.add('drawn');
+    if (!img) {
+      // Drawn frames set their own dash lengths from JS. Adding the class in
+      // the same frame means the browser never paints the undrawn state, so
+      // the transition has nothing to run from and the outline just appears.
+      requestAnimationFrame(() => requestAnimationFrame(() => el.classList.add('drawn')));
+      return;
+    }
     const go = () => el.classList.add('drawn');
     const ready = () => (img.decode ? img.decode().catch(() => {}) : Promise.resolve()).then(go);
     if (img.complete && img.naturalWidth) ready();

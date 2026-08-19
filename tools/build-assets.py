@@ -17,7 +17,6 @@ os.makedirs(OUT, exist_ok=True)
 
 # (pexels id, output name, target aspect w/h, output width)
 JOBS = [
-    ('18708750', 'hero.jpg',        4/5,  1100),
     ('7702669',  'piece-1.jpg',     4/5,   800),
     ('7814730',  'piece-2.jpg',     4/5,   800),
     ('34089129', 'piece-3.jpg',     4/5,   800),
