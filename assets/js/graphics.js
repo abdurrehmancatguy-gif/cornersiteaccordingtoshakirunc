@@ -46,17 +46,26 @@ window.BGSArt = (() => {
     svg.appendChild(g);
 
     DETAIL.forEach(d => g.appendChild(el('path', { d, class: 'hb-detail' })));
-    g.appendChild(el('path', { d: STOPPER, class: 'hb-base' }));
-    g.appendChild(el('path', { d: SILHOUETTE, class: 'hb-base' }));
+    g.appendChild(el('path', { d: STOPPER, class: 'hb-base hb-cap' }));
+    g.appendChild(el('path', { d: SILHOUETTE, class: 'hb-base hb-body' }));
     g.appendChild(el('path', { d: SILHOUETTE, class: 'hb-trace' }));
     g.appendChild(el('path', { d: STOPPER, class: 'hb-trace hb-trace--stopper' }));
 
-    // measure once so the draw-on and the travelling highlight are exact
-    svg.querySelectorAll('path').forEach((path, i) => {
-      const len = path.getTotalLength();
-      path.style.setProperty('--len', len.toFixed(1));
-      path.style.setProperty('--d', (i * 0.09).toFixed(2) + 's');
-    });
+    // Measure each stroke and stage it explicitly. Ordering by role rather
+    // than DOM index means the silhouette forms first, the stopper lands on
+    // top of it, and the interior lines fill in last.
+    const stage = (sel, delay, dur, step = 0) =>
+      [...svg.querySelectorAll(sel)].forEach((path, i) => {
+        path.style.setProperty('--len', path.getTotalLength().toFixed(1));
+        path.style.setProperty('--d', (delay + i * step).toFixed(2) + 's');
+        path.style.setProperty('--dur', dur + 's');
+      });
+
+    stage('.hb-body',   0.15, 2.0);
+    stage('.hb-cap',    1.05, 0.9);
+    stage('.hb-detail', 1.55, 0.7, 0.09);
+    [...svg.querySelectorAll('.hb-trace')].forEach(path =>
+      path.style.setProperty('--len', path.getTotalLength().toFixed(1)));
     return svg;
   }
 
