@@ -521,3 +521,15 @@ ul,ol{margin:0;padding:0;list-style:none}
 .map__link{color:var(--gold-deep);border-bottom:1px solid var(--rule);
   transition:border-color .4s}
 .map__link:hover{border-color:var(--gold)}
+
+/* legal pages: a back link that does not depend on the nav, which collapses
+   to just the logo below 760px */
+.legal__back{display:inline-flex;align-items:center;gap:.7rem;
+  margin-bottom:2.2rem;padding:.7rem 1.3rem;
+  border:1px solid var(--rule);border-radius:2px;
+  font-size:.68rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft);
+  transition:border-color .45s var(--ease),color .45s var(--ease),gap .45s var(--ease)}
+.legal__back span{color:var(--gold-deep);transition:transform .45s var(--ease)}
+.legal__back:hover{border-color:var(--gold);color:var(--ink)}
+.legal__back:hover span{transform:translateX(-4px)}
+.legal__back--end{margin:clamp(3rem,6vw,4.5rem) 0 0}

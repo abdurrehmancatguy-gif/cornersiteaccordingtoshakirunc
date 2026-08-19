@@ -43,6 +43,7 @@ SHELL = '''<!DOCTYPE html>
       <a href="index.html#what">What We Do</a>
       <a href="index.html#products">Our Products</a>
       <a href="index.html#contact">Contact</a>
+      <a href="{other_href}">{other_label}</a>
     </nav>
     <a class="btn btn--ghost nav__cta" href="index.html#contact" data-magnetic>Enquire</a>
   </div>
@@ -51,9 +52,15 @@ SHELL = '''<!DOCTYPE html>
 
 <main class="legal section" id="doc">
   <div class="wrap legal__inner">
+    <a class="legal__back" href="index.html">
+      <span aria-hidden="true">&larr;</span> Back to BGS Corner
+    </a>
     <p class="eyebrow reveal">Legal</p>
     <h1 class="legal__title reveal" data-delay="1">{title}</h1>
 {body}
+    <a class="legal__back legal__back--end" href="index.html">
+      <span aria-hidden="true">&larr;</span> Back to BGS Corner
+    </a>
   </div>
 </main>
 
@@ -106,13 +113,16 @@ def render(raw):
     flush()
     return '\n'.join(out)
 
-for slug, title, desc, src in [
+for slug, title, desc, src, other_href, other_label in [
     ('terms',   'Terms &amp; Conditions',
-     'Terms and conditions for B G S Corner General Trading L.L.C.', 'terms.txt'),
+     'Terms and conditions for B G S Corner General Trading L.L.C.', 'terms.txt',
+     'privacy.html', 'Privacy'),
     ('privacy', 'Privacy Policy',
-     'How B G S Corner General Trading L.L.C. collects, uses and safeguards personal data.', 'privacy.txt'),
+     'How B G S Corner General Trading L.L.C. collects, uses and safeguards personal data.', 'privacy.txt',
+     'terms.html', 'Terms'),
 ]:
     raw = open(os.path.join(HERE, 'tools', src)).read()
-    page = SHELL.format(title=title, desc=desc, body=render(raw))
+    page = SHELL.format(title=title, desc=desc, body=render(raw),
+                        other_href=other_href, other_label=other_label)
     open(os.path.join(HERE, slug + '.html'), 'w').write(page)
     print(slug + '.html', len(page) // 1024 + 1, 'KB')
