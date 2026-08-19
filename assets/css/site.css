@@ -517,3 +517,7 @@ ul,ol{margin:0;padding:0;list-style:none}
   width:5px;height:5px;background:var(--gold);transform:rotate(45deg)}
 .legal a{border-bottom:1px solid var(--rule);transition:border-color .4s,color .4s}
 .legal a:hover{border-color:var(--gold);color:var(--gold-deep)}
+.map figcaption{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+.map__link{color:var(--gold-deep);border-bottom:1px solid var(--rule);
+  transition:border-color .4s}
+.map__link:hover{border-color:var(--gold)}
