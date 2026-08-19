@@ -533,3 +533,17 @@ ul,ol{margin:0;padding:0;list-style:none}
 .legal__back:hover{border-color:var(--gold);color:var(--ink)}
 .legal__back:hover span{transform:translateX(-4px)}
 .legal__back--end{margin:clamp(3rem,6vw,4.5rem) 0 0}
+
+/* close control on the legal pages — sits ahead of the logo at the left edge
+   so it never lands on top of the mark */
+.closebtn{display:grid;place-items:center;flex:none;
+  width:2.6rem;height:2.6rem;border-radius:50%;
+  border:1px solid var(--rule);color:var(--gold-deep);
+  transition:border-color .45s var(--ease),background .45s var(--ease),
+             transform .45s var(--ease)}
+.closebtn svg{width:1.05rem;height:1.05rem;stroke:currentColor;stroke-width:1.4;
+  fill:none;stroke-linecap:round}
+.closebtn:hover{border-color:var(--gold);background:rgba(184,145,58,.12);
+  transform:rotate(90deg)}
+.closebtn:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media (max-width:760px){.closebtn{width:2.3rem;height:2.3rem}}
