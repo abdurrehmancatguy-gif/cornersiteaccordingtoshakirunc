@@ -692,3 +692,28 @@ ul,ol{margin:0;padding:0;list-style:none}
 @keyframes vitrine{0%,100%{opacity:.2}50%{opacity:.6}}
 .kiosk__specs{margin-top:clamp(2.5rem,5vw,4rem)}
 @media (prefers-reduced-motion:reduce){.k-glow{animation:none;opacity:.4}}
+
+/* ─────────────────────────────────────────── brand monogram, drawn in place */
+.markart{position:absolute;inset:16%;width:68%;height:68%}
+.markart__lines{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.markart__lines path{fill:none;stroke:var(--gold-deep);stroke-width:.55;
+  stroke-linejoin:round;stroke-linecap:round;
+  stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.artframe.drawn .markart__lines path{
+  animation:hbdraw var(--dur,1.8s) var(--ease) var(--d,0s) both}
+/* once the fill lands the outline steps back, so it reads as ink not wireframe */
+.artframe.drawn .markart__lines{animation:markline 1.2s var(--ease) 2.7s both}
+@keyframes markline{from{opacity:1}to{opacity:.3}}
+
+.markart__fill{position:absolute;inset:0;opacity:0;
+  background:var(--foil-sweep);background-size:300% 100%;
+  -webkit-mask:url("../brand/logo-mark.png") center/contain no-repeat;
+          mask:url("../brand/logo-mark.png") center/contain no-repeat}
+.artframe.drawn .markart__fill{
+  animation:markink 1.5s var(--ease) 2.5s both, foil 5.5s linear 2.5s infinite}
+@keyframes markink{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  .markart__lines{display:none}
+  .markart__fill{opacity:1;animation:none}
+}
