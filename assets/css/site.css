@@ -700,7 +700,12 @@ ul,ol{margin:0;padding:0;list-style:none}
 @property --wipe{syntax:'<length-percentage>';inherits:false;initial-value:0%}
 @property --wipe2{syntax:'<length-percentage>';inherits:false;initial-value:0%}
 
-.markart{position:absolute;inset:16%;width:68%;height:68%}
+/* Sized off the short side as a centred square, so the mark can never reach
+   the frame edge. inset plus width and height over-constrains the box: the
+   browser drops `right` and `bottom`, which leaves the fit depending on the
+   frame's aspect rather than being guaranteed. */
+.markart{position:absolute;left:50%;top:50%;translate:-50% -50%;
+  height:56%;width:auto;aspect-ratio:1;max-width:70%;max-height:70%}
 .markart__outline,.markart__fill{position:absolute;inset:0;display:block}
 
 .markart__outline{z-index:1;background:var(--gold-deep);
