@@ -695,35 +695,42 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* ─────────────────────────────────────────── brand monogram, drawn in place
    Two mask layers over the real artwork rather than a traced approximation.
-   A conic sweep wipes the outline on like a compass going round, then the
-   solid mark inks in beneath it. The outline stays. */
-@property --sweep{syntax:'<angle>';inherits:false;initial-value:0deg}
+   A soft edge rises from the base of the mark, revealing the outline, then
+   the solid mark fills up behind it. The outline stays. */
+@property --wipe{syntax:'<length-percentage>';inherits:false;initial-value:0%}
+@property --wipe2{syntax:'<length-percentage>';inherits:false;initial-value:0%}
 
 .markart{position:absolute;inset:16%;width:68%;height:68%}
 .markart__outline,.markart__fill{position:absolute;inset:0;display:block}
 
-.markart__outline{background:var(--gold-deep);
+.markart__outline{z-index:1;background:var(--gold-deep);
   -webkit-mask:url("../brand/logo-mark-outline.png") center/contain no-repeat,
-               conic-gradient(from -90deg,#000 var(--sweep),transparent 0);
+               linear-gradient(to top,#000 var(--wipe),
+                               rgba(0,0,0,0) calc(var(--wipe) + 7%));
   -webkit-mask-composite:source-in;
           mask:url("../brand/logo-mark-outline.png") center/contain no-repeat,
-               conic-gradient(from -90deg,#000 var(--sweep),transparent 0);
+               linear-gradient(to top,#000 var(--wipe),
+                               rgba(0,0,0,0) calc(var(--wipe) + 7%));
           mask-composite:intersect}
-.artframe.drawn .markart__outline{animation:marksweep 2.3s var(--ease) .25s both}
-@keyframes marksweep{from{--sweep:0deg}to{--sweep:360deg}}
+.artframe.drawn .markart__outline{
+  animation:markwipe 2.4s cubic-bezier(.5,.02,.4,1) .3s both}
+@keyframes markwipe{from{--wipe:0%}to{--wipe:100%}}
 
-.markart__fill{opacity:0;
+.markart__fill{
   background:var(--foil-sweep);background-size:300% 100%;
-  -webkit-mask:url("../brand/logo-mark.png") center/contain no-repeat;
-          mask:url("../brand/logo-mark.png") center/contain no-repeat}
+  -webkit-mask:url("../brand/logo-mark.png") center/contain no-repeat,
+               linear-gradient(to top,#000 var(--wipe2),
+                               rgba(0,0,0,0) calc(var(--wipe2) + 10%));
+  -webkit-mask-composite:source-in;
+          mask:url("../brand/logo-mark.png") center/contain no-repeat,
+               linear-gradient(to top,#000 var(--wipe2),
+                               rgba(0,0,0,0) calc(var(--wipe2) + 10%));
+          mask-composite:intersect}
 .artframe.drawn .markart__fill{
-  animation:markink 1.4s var(--ease) 2.2s both, foil 5.5s linear 2.2s infinite}
-@keyframes markink{from{opacity:0;transform:scale(.985)}to{opacity:1;transform:none}}
-
-/* the outline sits over the fill, so the mark keeps a drawn edge */
-.markart__outline{z-index:1}
+  animation:markfill 2.2s cubic-bezier(.5,.02,.4,1) 1.1s both,
+            foil 5.5s linear 3.5s infinite}
+@keyframes markfill{from{--wipe2:0%}to{--wipe2:100%}}
 
 @media (prefers-reduced-motion:reduce){
-  .markart__outline{animation:none;--sweep:360deg}
-  .markart__fill{opacity:1;animation:none}
+  .markart__outline,.markart__fill{animation:none;--wipe:100%;--wipe2:100%}
 }
