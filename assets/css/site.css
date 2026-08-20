@@ -648,3 +648,8 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hb-trace--stopper{stroke-width:1.8;stroke-dasharray:26 calc(var(--len) - 26)}
 .artframe.drawn .hb-trace--stopper{animation:hbfade .8s var(--ease) 3.4s both,
                                     hbtrace 4.4s linear 3.4s infinite}
+.trade-cap{margin-top:clamp(3.5rem,7vw,6rem)}
+.pillars--six{grid-template-columns:repeat(3,1fr)}
+.pillars--six .pillar{padding-top:clamp(1.9rem,3vw,2.8rem)}
+@media (max-width:1080px){.pillars--six{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){.pillars--six{grid-template-columns:1fr}}
