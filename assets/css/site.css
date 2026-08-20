@@ -669,7 +669,8 @@ ul,ol{margin:0;padding:0;list-style:none}
                       to{transform:translate3d(-50%,0,0)}}
 @keyframes carousel-r{from{transform:translate3d(-50%,0,0)}
                       to{transform:translate3d(0,0,0)}}
-.carousel:hover .carousel__row,
+/* Runs continuously — hover does not pause it. Keyboard focus still does,
+   otherwise a focused card would travel out from under the caret. */
 .carousel:focus-within .carousel__row{animation-play-state:paused}
 .carousel .card{flex:0 0 auto;width:clamp(200px,20vw,282px)}
 .carousel .card__meta{margin-top:.9rem;padding-bottom:.8rem}
