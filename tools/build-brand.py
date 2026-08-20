@@ -40,14 +40,29 @@ save(mark[ys.min():ys.max() + 1, xs.min():xs.max() + 1], 'logo-mark.png')
 # leaving chords straight through the letterforms. Deriving the outline from
 # the artwork itself, by subtracting an eroded copy from a dilated one, is
 # exact by construction.
+#
+# Both masks are built on a padded square canvas. logo-mark.png is trimmed to
+# the ink, so the glyph touches all four edges; dilating it there pushes the
+# ring past the canvas and the outer circle comes back flattened on the sides.
+# The padding also keeps the fill and the outline on identical geometry, so
+# `contain` registers them exactly on top of each other.
+RING, PAD = 7, 16
 mark_a = Image.open(OUT + 'logo-mark.png').getchannel('A')
-ring = ImageChops.subtract(mark_a.filter(ImageFilter.MaxFilter(7)),
-                           mark_a.filter(ImageFilter.MinFilter(7)))
-outline = Image.new('RGBA', mark_a.size, (255, 255, 255, 0))
-outline.putalpha(ring)
-outline.save(OUT + 'logo-mark-outline.png', optimize=True)
-print(f"logo-mark-outline.png    {ring.size[0]}x{ring.size[1]}  "
-      f"{os.path.getsize(OUT + 'logo-mark-outline.png') // 1024} KB")
+side = max(mark_a.size) + PAD * 2
+square = Image.new('L', (side, side), 0)
+square.paste(mark_a, ((side - mark_a.width) // 2, (side - mark_a.height) // 2))
+
+def as_mask(alpha, name):
+    img = Image.new('RGBA', alpha.size, (255, 255, 255, 0))
+    img.putalpha(alpha)
+    img.save(OUT + name, optimize=True)
+    print(f'{name:24} {alpha.size[0]}x{alpha.size[1]}  '
+          f'{os.path.getsize(OUT + name) // 1024} KB')
+
+as_mask(square, 'logo-mark-pad.png')
+as_mask(ImageChops.subtract(square.filter(ImageFilter.MaxFilter(RING)),
+                            square.filter(ImageFilter.MinFilter(RING))),
+        'logo-mark-outline.png')
 
 # favicon: gold monogram on ink, 180px
 mark_img = Image.open(OUT + 'logo-mark.png')

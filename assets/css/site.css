@@ -705,7 +705,7 @@ ul,ol{margin:0;padding:0;list-style:none}
    browser drops `right` and `bottom`, which leaves the fit depending on the
    frame's aspect rather than being guaranteed. */
 .markart{position:absolute;left:50%;top:50%;translate:-50% -50%;
-  height:56%;width:auto;aspect-ratio:1;max-width:70%;max-height:70%}
+  height:60%;width:auto;aspect-ratio:1;max-width:74%;max-height:74%}
 .markart__outline,.markart__fill{position:absolute;inset:0;display:block}
 
 .markart__outline{z-index:1;background:var(--gold-deep);
@@ -723,11 +723,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 .markart__fill{
   background:var(--foil-sweep);background-size:300% 100%;
-  -webkit-mask:url("../brand/logo-mark.png") center/contain no-repeat,
+  -webkit-mask:url("../brand/logo-mark-pad.png") center/contain no-repeat,
                linear-gradient(to top,#000 var(--wipe2),
                                rgba(0,0,0,0) calc(var(--wipe2) + 10%));
   -webkit-mask-composite:source-in;
-          mask:url("../brand/logo-mark.png") center/contain no-repeat,
+          mask:url("../brand/logo-mark-pad.png") center/contain no-repeat,
                linear-gradient(to top,#000 var(--wipe2),
                                rgba(0,0,0,0) calc(var(--wipe2) + 10%));
           mask-composite:intersect}
