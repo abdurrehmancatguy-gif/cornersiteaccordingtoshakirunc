@@ -69,6 +69,45 @@ window.BGSArt = (() => {
     return svg;
   }
 
+  /* ── kiosk elevation ────────────────────────────────────────────────────
+     Line drawing of the unit: canopy carrying the monogram, three lit
+     vitrines, counter and plinth. */
+  function kiosk(svg) {
+    const W = 1000, H = 460;
+    svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    svg.setAttribute('fill', 'none');
+    svg.innerHTML = '';
+    const g = el('g', { class: 'k' });
+    svg.appendChild(g);
+
+    g.appendChild(el('path', { d: 'M120 96 L880 96 L880 150 L120 150 Z', class: 'k-line' }));
+    g.appendChild(el('path', { d: 'M150 96 C150 60 300 44 500 44 C700 44 850 60 850 96', class: 'k-line' }));
+    for (let i = 0; i < 26; i++)
+      g.appendChild(el('path', { d: `M${140 + i * 28.5} 100 L${140 + i * 28.5} 146`, class: 'k-hair' }));
+    g.appendChild(el('circle', { cx: 500, cy: 123, r: 26, class: 'k-gold' }));
+    g.appendChild(el('circle', { cx: 500, cy: 123, r: 18, class: 'k-hair' }));
+
+    g.appendChild(el('path', { d: 'M172 150 L172 404 M828 150 L828 404', class: 'k-line' }));
+
+    [230, 430, 630].forEach((x, i) => {
+      const v = el('g', { class: 'k-vitrine', style: `--i:${i}` });
+      v.appendChild(el('rect', { x, y: 176, width: 140, height: 190, rx: 2, class: 'k-line' }));
+      v.appendChild(el('rect', { x: x + 8, y: 184, width: 124, height: 174, rx: 1, class: 'k-hair' }));
+      v.appendChild(el('rect', { x: x + 30, y: 340, width: 80, height: 26, rx: 1, class: 'k-gold' }));
+      v.appendChild(el('path', { d: `M${x + 70} 214 l16 0 -4 26 -8 0 z M${x + 62} 240 l32 0 6 84 -44 0 z`, class: 'k-gold' }));
+      v.appendChild(el('circle', { cx: x + 70, cy: 202, r: 11, class: 'k-line' }));
+      v.appendChild(el('rect', { x: x + 4, y: 180, width: 132, height: 182, class: 'k-glow' }));
+      g.appendChild(v);
+    });
+
+    g.appendChild(el('path', { d: 'M150 366 L850 366 L850 404 L150 404 Z', class: 'k-line' }));
+    g.appendChild(el('path', { d: 'M120 404 L880 404 L900 428 L100 428 Z', class: 'k-gold' }));
+    for (let i = 0; i < 40; i++)
+      g.appendChild(el('path', { d: `M${125 + i * 19} 370 L${125 + i * 19} 400`, class: 'k-hair' }));
+    g.appendChild(el('path', { d: 'M60 440 L940 440', class: 'k-hair' }));
+    return svg;
+  }
+
   /* ── guilloché field ────────────────────────────────────────────────────
      Hypotrochoid rosettes in gold hairline — the geometry of the monogram and
      of the engraving cut into the crystal. */
@@ -142,5 +181,5 @@ window.BGSArt = (() => {
     return resize;
   }
 
-  return { guilloche, heroBottle };
+  return { guilloche, heroBottle, kiosk };
 })();

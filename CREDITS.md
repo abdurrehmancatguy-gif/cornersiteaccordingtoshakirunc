@@ -8,23 +8,25 @@ attribution required. Credited here anyway.
 
 | File | Pexels photo | Checked |
 |---|---|---|
-| `piece-1.jpg` | [7702669](https://www.pexels.com/photo/7702669/) | no label |
-| `piece-2.jpg` | [7814730](https://www.pexels.com/photo/7814730/) | no label |
-| `piece-3.jpg` | [4041387](https://www.pexels.com/photo/4041387/) | no label |
-| `piece-4.jpg` | [34089129](https://www.pexels.com/photo/34089129/) | no label |
-| `piece-5.jpg` | [6915111](https://www.pexels.com/photo/6915111/) | no label |
-| `piece-6.jpg` | [8624586](https://www.pexels.com/photo/8624586/) | no label |
-| `piece-7.jpg` | [18708750](https://www.pexels.com/photo/18708750/) | no label |
-| `piece-8.jpg` | [34387954](https://www.pexels.com/photo/34387954/) | no label |
-| `piece-9.jpg` | [32630375](https://www.pexels.com/photo/32630375/) | no label |
-| `piece-10.jpg` | [264819](https://www.pexels.com/photo/264819/) | no label |
-| `piece-11.jpg` | [8361545](https://www.pexels.com/photo/8361545/) | no label |
-| `piece-12.jpg` | [34470639](https://www.pexels.com/photo/34470639/) | no label |
+| `cat-vapes.jpg` | [5387722](https://www.pexels.com/photo/5387722/) | no label |
+| `cat-pods.jpg` | [11587602](https://www.pexels.com/photo/11587602/) | no label |
+| `cat-earbuds.jpg` | [30981655](https://www.pexels.com/photo/30981655/) | no label |
+| `cat-headphones.jpg` | [8858287](https://www.pexels.com/photo/8858287/) | no label |
+| `cat-powerbanks.jpg` | [34338614](https://www.pexels.com/photo/34338614/) | no label |
+| `cat-cables.jpg` | [3921713](https://www.pexels.com/photo/3921713/) | no label |
+| `cat-bags.jpg` | [8502484](https://www.pexels.com/photo/8502484/) | no label |
+| `cat-eyewear.jpg` | [12444600](https://www.pexels.com/photo/12444600/) | no label |
+| `cat-souvenirs.jpg` | [18294704](https://www.pexels.com/photo/18294704/) | no label |
+| `cat-handicrafts.jpg` | [11101553](https://www.pexels.com/photo/11101553/) | no label |
+| `cat-gifts.jpg` | [4271691](https://www.pexels.com/photo/4271691/) | no label |
+| `cat-perfumes.jpg` | [7702669](https://www.pexels.com/photo/7702669/) | no label |
+| `trade.jpg` | [8450240](https://www.pexels.com/photo/8450240/) | no label |
 
 Every image above was opened at full resolution and checked for third-party
 marks before use. Shots carrying a legible brand name were rejected — among
 them an "AFFINESSENCE PARIS" bottle, an etched "24", a "MARC JACOBS" cap, a
-"GOLDEN BLACK" oud and a "ZIELINSKI & ROZEN" label. A competitor's mark on a BGS product card is both
+"GOLDEN BLACK" oud, a "ZIELINSKI & ROZEN" label, a "MARC JACOBS" bag, a
+"Ray-Ban" case and mall kiosks carrying "LANCOME" and "FIYTA" signage. A competitor's mark on a BGS product card is both
 misleading and a trademark problem.
 
 **These are placeholders.** They are generic fragrance and retail stock, not BGS
@@ -33,6 +35,11 @@ photography does not show. Replace them with your own product shots before this
 goes to customers.
 
 ## Generated artwork
+
+The hero bottle and the kiosk elevation are both drawn by
+`assets/js/graphics.js`, not photographed. No unbranded photograph of a mall
+kiosk could be found; every candidate carried tenant signage.
+
 
 The hero is not a photograph — it is a bottle drawn in line by
 `assets/js/graphics.js`, which measures its own paths and animates a highlight

@@ -17,21 +17,21 @@ os.makedirs(OUT, exist_ok=True)
 
 # (pexels id, output name, target aspect w/h, output width)
 JOBS = [
-    ('7702669',  'piece-1.jpg',     4/5,   760),
-    ('7814730',  'piece-2.jpg',     4/5,   760),
-    ('4041387',  'piece-3.jpg',     4/5,   760),
-    ('34089129', 'piece-4.jpg',     4/5,   760),
-    ('6915111',  'piece-5.jpg',     4/5,   760),
-    ('8624586',  'piece-6.jpg',     4/5,   760),
-    ('18708750', 'piece-7.jpg',     4/5,   760),
-    ('34387954', 'piece-8.jpg',     4/5,   760),
-    ('32630375', 'piece-9.jpg',     4/5,   760),
-    ('264819',   'piece-10.jpg',    4/5,   760),
-    ('8361545',  'piece-11.jpg',    4/5,   760),
-    ('34470639', 'piece-12.jpg',    4/5,   760),
-    ('8450240',  'kiosk.jpg',    16/7.2,  1700),
-    ('17860048', 'oud.jpg',         4/5,  1000),
-    ('4271691',  'case.jpg',        4/5,  1000),
+    # trade categories, in carousel order
+    ('5387722',  'cat-vapes.jpg',        4/5, 760),
+    ('11587602', 'cat-pods.jpg',         4/5, 760),
+    ('30981655', 'cat-earbuds.jpg',      4/5, 760),
+    ('8858287',  'cat-headphones.jpg',   4/5, 760),
+    ('34338614', 'cat-powerbanks.jpg',   4/5, 760),
+    ('3921713',  'cat-cables.jpg',       4/5, 760),
+    ('8502484',  'cat-bags.jpg',         4/5, 760),
+    ('12444600', 'cat-eyewear.jpg',      4/5, 760),
+    ('18294704', 'cat-souvenirs.jpg',    4/5, 760),
+    ('11101553', 'cat-handicrafts.jpg',  4/5, 760),
+    ('4271691',  'cat-gifts.jpg',        4/5, 760),
+    ('7702669',  'cat-perfumes.jpg',     4/5, 760),
+    # section plates
+    ('8450240',  'trade.jpg',         16/7.2, 1700),
 ]
 
 def crop_to(im, aspect):

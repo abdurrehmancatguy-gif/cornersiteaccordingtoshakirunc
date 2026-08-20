@@ -681,3 +681,14 @@ ul,ol{margin:0;padding:0;list-style:none}
   .carousel__row{animation:none}
   .carousel__row--rev{display:none}
 }
+
+/* kiosk elevation, drawn */
+.kioskart{position:absolute;inset:8%;width:84%;height:84%}
+.k-line{stroke:var(--gold-deep);stroke-width:1.7;stroke-linejoin:round;fill:none}
+.k-hair{stroke:rgba(107,78,19,.42);stroke-width:.65;fill:none}
+.k-gold{stroke:var(--gold);stroke-width:1.45;fill:rgba(184,145,58,.3)}
+.k-glow{fill:rgba(214,182,112,.42);stroke:none;
+  animation:vitrine 5s ease-in-out infinite;animation-delay:calc(var(--i)*.7s)}
+@keyframes vitrine{0%,100%{opacity:.2}50%{opacity:.6}}
+.kiosk__specs{margin-top:clamp(2.5rem,5vw,4rem)}
+@media (prefers-reduced-motion:reduce){.k-glow{animation:none;opacity:.4}}
