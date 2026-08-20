@@ -16,7 +16,6 @@
   if (Art) {
     $$('[data-herobottle]').forEach(Art.heroBottle);
     $$('[data-kiosk]').forEach(Art.kiosk);
-    $$('[data-markart]').forEach(Art.markArt);
     if (!calm) $$('[data-guilloche]').forEach(c => Art.guilloche(c, { seed: +c.dataset.seed || 0 }));
   }
 

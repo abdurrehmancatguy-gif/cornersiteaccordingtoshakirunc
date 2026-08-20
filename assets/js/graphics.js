@@ -108,23 +108,6 @@ window.BGSArt = (() => {
     return svg;
   }
 
-  /* ── brand monogram ─────────────────────────────────────────────────────
-     The traced outlines draw themselves, then the mask fills in beneath and
-     the outline steps back — the mark forming rather than appearing. */
-  function markArt(el) {
-    const paths = [...el.querySelectorAll('.markart__lines path')];
-    const total = paths.reduce((n, p) => n + p.getTotalLength(), 0);
-    let run = 0;
-    paths.forEach(p => {
-      const len = p.getTotalLength();
-      p.style.setProperty('--len', len.toFixed(1));
-      p.style.setProperty('--d', (run / total * 1.1).toFixed(2) + 's');
-      p.style.setProperty('--dur', (1.5 + len / total * 1.4).toFixed(2) + 's');
-      run += len;
-    });
-    return el;
-  }
-
   /* ── guilloché field ────────────────────────────────────────────────────
      Hypotrochoid rosettes in gold hairline — the geometry of the monogram and
      of the engraving cut into the crystal. */
@@ -198,5 +181,5 @@ window.BGSArt = (() => {
     return resize;
   }
 
-  return { guilloche, heroBottle, kiosk, markArt };
+  return { guilloche, heroBottle, kiosk };
 })();

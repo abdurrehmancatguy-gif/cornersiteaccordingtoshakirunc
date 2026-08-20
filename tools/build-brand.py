@@ -5,7 +5,7 @@ The PDF is black artwork on white. We key luminance into the alpha channel so
 the result can be tinted any colour with CSS `mask-image` — gold foil on ivory,
 ink on gold, whatever the section needs — from a single asset.
 """
-from PIL import Image
+from PIL import Image, ImageChops, ImageFilter
 import numpy as np, os, subprocess, tempfile
 
 SRC = '/Users/ajoomama/Downloads/BGS LOGO.pdf'
@@ -34,6 +34,20 @@ save(a, 'logo-lockup.png')                                    # monogram + BGS w
 mark = a[:, :860]                                             # monogram sits left of the 134px gap
 ys, xs = np.where(mark > 12)
 save(mark[ys.min():ys.max() + 1, xs.min():xs.max() + 1], 'logo-mark.png')
+
+# Outline of the mark, as a mask. Vector tracing the glyph was tried and
+# abandoned: marching squares kept joining contours across the saddle cells,
+# leaving chords straight through the letterforms. Deriving the outline from
+# the artwork itself, by subtracting an eroded copy from a dilated one, is
+# exact by construction.
+mark_a = Image.open(OUT + 'logo-mark.png').getchannel('A')
+ring = ImageChops.subtract(mark_a.filter(ImageFilter.MaxFilter(7)),
+                           mark_a.filter(ImageFilter.MinFilter(7)))
+outline = Image.new('RGBA', mark_a.size, (255, 255, 255, 0))
+outline.putalpha(ring)
+outline.save(OUT + 'logo-mark-outline.png', optimize=True)
+print(f"logo-mark-outline.png    {ring.size[0]}x{ring.size[1]}  "
+      f"{os.path.getsize(OUT + 'logo-mark-outline.png') // 1024} KB")
 
 # favicon: gold monogram on ink, 180px
 mark_img = Image.open(OUT + 'logo-mark.png')
