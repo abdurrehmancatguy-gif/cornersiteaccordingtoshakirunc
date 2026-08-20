@@ -10,18 +10,21 @@ attribution required. Credited here anyway.
 |---|---|---|
 | `piece-1.jpg` | [7702669](https://www.pexels.com/photo/7702669/) | no label |
 | `piece-2.jpg` | [7814730](https://www.pexels.com/photo/7814730/) | no label |
-| `piece-3.jpg` | [34089129](https://www.pexels.com/photo/34089129/) | no label |
-| `piece-4.jpg` | [8361545](https://www.pexels.com/photo/8361545/) | blank label |
+| `piece-3.jpg` | [4041387](https://www.pexels.com/photo/4041387/) | no label |
+| `piece-4.jpg` | [34089129](https://www.pexels.com/photo/34089129/) | no label |
 | `piece-5.jpg` | [6915111](https://www.pexels.com/photo/6915111/) | no label |
 | `piece-6.jpg` | [8624586](https://www.pexels.com/photo/8624586/) | no label |
-| `kiosk.jpg` | [8450240](https://www.pexels.com/photo/8450240/) | tags illegible |
-| `oud.jpg` | [17860048](https://www.pexels.com/photo/17860048/) | no label |
-| `case.jpg` | [4271691](https://www.pexels.com/photo/4271691/) | no label |
+| `piece-7.jpg` | [18708750](https://www.pexels.com/photo/18708750/) | no label |
+| `piece-8.jpg` | [34387954](https://www.pexels.com/photo/34387954/) | no label |
+| `piece-9.jpg` | [32630375](https://www.pexels.com/photo/32630375/) | no label |
+| `piece-10.jpg` | [264819](https://www.pexels.com/photo/264819/) | no label |
+| `piece-11.jpg` | [8361545](https://www.pexels.com/photo/8361545/) | no label |
+| `piece-12.jpg` | [34470639](https://www.pexels.com/photo/34470639/) | no label |
 
 Every image above was opened at full resolution and checked for third-party
 marks before use. Shots carrying a legible brand name were rejected — among
-them an "AFFINESSENCE PARIS" bottle, an etched "24", a "MARC JACOBS" cap and a
-"GOLDEN BLACK" oud. A competitor's mark on a BGS product card is both
+them an "AFFINESSENCE PARIS" bottle, an etched "24", a "MARC JACOBS" cap, a
+"GOLDEN BLACK" oud and a "ZIELINSKI & ROZEN" label. A competitor's mark on a BGS product card is both
 misleading and a trademark problem.
 
 **These are placeholders.** They are generic fragrance and retail stock, not BGS

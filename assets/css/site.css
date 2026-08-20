@@ -653,3 +653,29 @@ ul,ol{margin:0;padding:0;list-style:none}
 .pillars--six .pillar{padding-top:clamp(1.9rem,3vw,2.8rem)}
 @media (max-width:1080px){.pillars--six{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:760px){.pillars--six{grid-template-columns:1fr}}
+
+/* ─────────────────────────────────────────────── two-layer product carousel */
+.carousel{position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 5%,#000 95%,transparent)}
+.carousel__row{display:flex;flex-wrap:nowrap;width:max-content;
+  gap:clamp(1rem,2vw,1.7rem);
+  animation:carousel-l 68s linear infinite;will-change:transform}
+.carousel__row--rev{margin-top:clamp(1rem,2vw,1.7rem);
+  animation-name:carousel-r;animation-duration:82s}
+/* the track holds the set twice, so half a width is one seamless lap */
+@keyframes carousel-l{from{transform:translate3d(0,0,0)}
+                      to{transform:translate3d(-50%,0,0)}}
+@keyframes carousel-r{from{transform:translate3d(-50%,0,0)}
+                      to{transform:translate3d(0,0,0)}}
+.carousel:hover .carousel__row,
+.carousel:focus-within .carousel__row{animation-play-state:paused}
+.carousel .card{flex:0 0 auto;width:clamp(200px,20vw,282px)}
+.carousel .card__meta{margin-top:.9rem;padding-bottom:.8rem}
+.carousel .card__meta h4{font-size:1.24rem}
+
+@media (prefers-reduced-motion:reduce){
+  .carousel{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+  .carousel__row{animation:none}
+  .carousel__row--rev{display:none}
+}
