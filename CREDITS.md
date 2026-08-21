@@ -38,8 +38,9 @@ goes to customers.
 
 `assets/video/kiosk.*` is BGS Corner's own footage of a completed unit,
 supplied by the client. Re-encoded from an 18.6 MB 2160x3840 ProRes-era .mov
-down to 720x1280 WebM and MP4 at roughly 700 KB each, audio stripped since it
-plays muted, plus a poster frame.
+down to a single 720x1280 MP4 of roughly 740 KB, audio stripped since it plays
+muted, plus a poster frame. WebM was dropped: it saved 26 KB and introduced a
+second code path for no benefit.
 
 ## Generated artwork
 
