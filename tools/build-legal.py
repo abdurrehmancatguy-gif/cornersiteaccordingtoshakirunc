@@ -39,7 +39,7 @@ SHELL = '''<!DOCTYPE html>
     <a class="nav__brand" href="index.html" aria-label="BGS Corner — home">
       <span class="markplate" aria-hidden="true"><span class="mark"></span></span>
       <span class="nav__wordmark">
-        <span class="nav__name">BGS Corner</span>
+        <span class="nav__name">BGS CORNER</span>
         <span class="nav__sub">General Trading</span>
       </span>
     </a>

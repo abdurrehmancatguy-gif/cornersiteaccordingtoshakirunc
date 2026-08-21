@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="360" viewBox="0 0 300 360">
 <style>
- .m{fill:none;stroke:#6B4E13;stroke-width:1.6;opacity:.16}
- .i{fill:#6B4E13;opacity:.05;stroke:#6B4E13;stroke-width:.8;stroke-opacity:.13}
- .l{fill:none;stroke:#6B4E13;stroke-width:1;opacity:.09}
- .d{fill:none;stroke:#6B4E13;stroke-width:1.1;opacity:.14}
- .d2{fill:#6B4E13;opacity:.12}
+ .m{fill:none;stroke:#6B4E13;stroke-width:2.1;opacity:.34}
+ .i{fill:#6B4E13;opacity:.11;stroke:#6B4E13;stroke-width:1.1;stroke-opacity:.28}
+ .l{fill:none;stroke:#6B4E13;stroke-width:1.3;opacity:.20}
+ .d{fill:none;stroke:#6B4E13;stroke-width:1.5;opacity:.30}
+ .d2{fill:#6B4E13;opacity:.26}
 </style>
 <path class="l" d="M0 0 C-58 108.0 -58 251.99999999999997 0 360 "/>
 <path class="l" d="M0 0 C58 108.0 58 251.99999999999997 0 360 "/>

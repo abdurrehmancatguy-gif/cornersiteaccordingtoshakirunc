@@ -74,13 +74,13 @@ body::before{
 body::after{
   content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background-image:url("../img/damask.svg");
-  background-size:300px 360px;
-  opacity:.9;
+  background-size:340px 408px;
+  opacity:1;
   /* One tile per cycle, so the seamless repeat carries it round with no jump.
      The whole field moves together rather than any element drifting alone. */
-  animation:paper 80s linear infinite;
+  animation:paper 55s linear infinite;
 }
-@keyframes paper{from{background-position:0 0}to{background-position:0 -360px}}
+@keyframes paper{from{background-position:0 0}to{background-position:0 -408px}}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -200,7 +200,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .nav.stuck .nav__inner{padding-block:.72rem}
 .nav__brand{display:flex;align-items:center;gap:.85rem;margin-right:auto}
 .nav__wordmark{display:flex;flex-direction:column;line-height:1}
-.nav__name{font-family:var(--f-display);font-size:1.32rem;color:var(--ink);letter-spacing:.01em}
+.nav__name{font-family:var(--f-display);font-size:1.3rem;color:var(--ink);letter-spacing:.09em}
 .nav__sub{font-size:.55rem;text-transform:uppercase;letter-spacing:.3em;color:var(--gold-deep);margin-top:.32rem}
 .nav__links{display:flex;gap:2.3rem}
 .nav__links a{font-size:.72rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-soft);position:relative;padding-block:.3rem}
