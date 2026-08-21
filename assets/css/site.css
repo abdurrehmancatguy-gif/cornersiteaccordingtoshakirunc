@@ -353,7 +353,7 @@ ul,ol{margin:0;padding:0;list-style:none}
      sliding under the nav while the last step is still being read */
   padding-bottom:clamp(2rem,14vh,9rem)}
 .concept__stick{position:sticky;top:max(12vh,5rem)}
-.concept__stick .artframe{max-height:56vh}
+.concept__stick .artframe:not(.artframe--video){max-height:56vh}
 .readout{margin-top:1.6rem;display:flex;align-items:baseline;gap:.8rem;
   border-top:1px solid var(--rule);padding-top:1.3rem}
 .readout__val{font-size:clamp(2.6rem,4.5vw,4rem);line-height:1;
@@ -763,9 +763,13 @@ ul,ol{margin:0;padding:0;list-style:none}
   .markart__outline,.markart__fill{animation:none;--wipe:100%;--wipe2:100%}
 }
 
-/* kiosk film — a real unit, in place of the drawing */
-.artframe--video{background:#15110B}
-.kioskvid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
+/* kiosk film — a real unit, in place of the drawing.
+   The frame takes the footage's own 9:16 rather than the 4:5 the other plates
+   use, so nothing is cropped and there are no bars either. Height drives the
+   box; width follows from the ratio and the frame centres in its column. */
+.artframe--video{background:#15110B;aspect-ratio:9/16;
+  height:min(62vh,34rem);width:auto;max-width:100%;margin-inline:auto}
+.kioskvid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;
   opacity:0;transform:scale(1.04);
   transition:opacity 1.4s var(--ease),transform 2s var(--ease)}
 .artframe--video.drawn .kioskvid{opacity:1;transform:none}
