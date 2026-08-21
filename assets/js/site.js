@@ -208,14 +208,16 @@
   }
 
   /* ── 9. the kiosk film ─────────────────────────────────────────────────
-     Autoplay is muted and inline, but some browsers still hold off until the
-     element is on screen, so nudge it when it arrives. */
+     Plays once and holds on its last frame. Once it has ended it stays there:
+     scrolling away and back must not start it over. */
   const film = $('.kioskvid');
   if (film) {
-    const play = () => film.play().catch(() => {});
     new IntersectionObserver((es) => {
-      for (const e of es) e.isIntersecting ? play() : film.pause();
-    }, { threshold: 0.2 }).observe(film);
+      for (const e of es) {
+        if (film.ended) continue;
+        e.isIntersecting ? film.play().catch(() => {}) : film.pause();
+      }
+    }, { threshold: 0.05 }).observe(film);
   }
 
   /* ── 10. odds and ends ────────────────────────────────────────────────── */
