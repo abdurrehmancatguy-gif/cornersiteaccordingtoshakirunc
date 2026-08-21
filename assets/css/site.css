@@ -76,7 +76,11 @@ body::after{
   background-image:url("../img/damask.svg");
   background-size:300px 360px;
   opacity:.9;
+  /* One tile per cycle, so the seamless repeat carries it round with no jump.
+     The whole field moves together rather than any element drifting alone. */
+  animation:paper 80s linear infinite;
 }
+@keyframes paper{from{background-position:0 0}to{background-position:0 -360px}}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -84,7 +88,7 @@ h1,h2,h3,h4,p,dl,dd,figure,blockquote{margin:0}
 ul,ol{margin:0;padding:0;list-style:none}
 
 .wrap{width:100%;max-width:var(--wrap);margin-inline:auto;padding-inline:var(--gut)}
-.section{padding-block:clamp(5.5rem,12vw,11rem);position:relative}
+.section{padding-block:clamp(3.25rem,6.5vw,6rem);position:relative}
 
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:-9999px;top:0;z-index:10000;background:var(--ink);color:var(--stone);padding:.8rem 1.3rem}
@@ -156,8 +160,8 @@ ul,ol{margin:0;padding:0;list-style:none}
   -webkit-background-clip:text;background-clip:text;color:transparent}
 .shead__title{font-size:clamp(2.1rem,4.6vw,4.3rem);line-height:1.04}
 .shead__title em{font-style:italic;background:var(--foil-text);-webkit-background-clip:text;background-clip:text;color:transparent}
-.shead{max-width:60ch;margin-bottom:clamp(3rem,6vw,5.5rem)}
-.shead--sub{margin-top:clamp(4.5rem,9vw,8rem)}
+.shead{max-width:60ch;margin-bottom:clamp(2rem,4vw,3.4rem)}
+.shead--sub{margin-top:clamp(3rem,6vw,5rem)}
 .shead__note{margin-top:1.6rem;max-width:48ch}
 .lede{font-family:var(--f-display);font-weight:400;
   font-size:clamp(1.12rem,.7vw + .95rem,1.42rem);line-height:1.62;
@@ -332,7 +336,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .pillar p{font-size:.92rem;line-height:1.7}
 
 /* ─────────────────────────────────────────────────────────── kiosk */
-.kiosk{margin-top:clamp(4rem,8vw,7rem);padding-inline:var(--gut);
+.kiosk{margin-top:clamp(2.5rem,5vw,4.5rem);padding-inline:var(--gut);
   max-width:calc(var(--wrap) + 8vw);margin-inline:auto}
 .kiosk__note{display:grid;grid-template-columns:1fr 2fr;gap:clamp(1.5rem,5vw,4rem);
   margin-top:2rem}
@@ -341,8 +345,12 @@ ul,ol{margin:0;padding:0;list-style:none}
 
 /* ─────────────────────────────────────────────────────────── concept */
 .concept{display:grid;grid-template-columns:.92fr 1.08fr;gap:clamp(2rem,6vw,6rem);
-  align-items:start}
-.concept__stick{position:sticky;top:16vh}
+  align-items:start;
+  /* travel for the pinned column: without it the column releases and starts
+     sliding under the nav while the last step is still being read */
+  padding-bottom:clamp(2rem,14vh,9rem)}
+.concept__stick{position:sticky;top:max(12vh,5rem)}
+.concept__stick .artframe{max-height:56vh}
 .readout{margin-top:1.6rem;display:flex;align-items:baseline;gap:.8rem;
   border-top:1px solid var(--rule);padding-top:1.3rem}
 .readout__val{font-size:clamp(2.6rem,4.5vw,4rem);line-height:1;
@@ -354,9 +362,12 @@ ul,ol{margin:0;padding:0;list-style:none}
 .readout.swap .readout__unit{opacity:0}
 
 .concept__steps{display:flex;flex-direction:column}
-.cstep{padding:clamp(2rem,4vw,3.2rem) 0;border-bottom:1px solid var(--rule);
+.cstep{display:flex;flex-direction:column;justify-content:center;
+  min-height:min(58vh,33rem);
+  padding:clamp(1.6rem,3vw,2.6rem) 0;border-bottom:1px solid var(--rule);
   transition:opacity .6s var(--ease)}
 .cstep:first-child{padding-top:0}
+.cstep:last-child{border-bottom:0}
 .cstep__no{display:block;font-size:.62rem;letter-spacing:.28em;color:var(--gold);margin-bottom:1.1rem}
 .cstep h3{font-family:var(--f-display);font-weight:400;font-size:clamp(1.5rem,2.3vw,2.15rem);
   color:var(--ink);line-height:1.2;margin-bottom:.85rem}
@@ -501,6 +512,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* ─────────────────────────────────────────────────────────── reduced motion */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
+  body::after{animation:none}
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important}
   .reveal{opacity:1;transform:none}
@@ -649,7 +661,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hb-trace--stopper{stroke-width:1.8;stroke-dasharray:26 calc(var(--len) - 26)}
 .artframe.drawn .hb-trace--stopper{animation:hbfade .8s var(--ease) 3.4s both,
                                     hbtrace 4.4s linear 3.4s infinite}
-.trade-cap{margin-top:clamp(3.5rem,7vw,6rem)}
+.trade-cap{margin-top:clamp(2.5rem,5vw,4rem)}
 .pillars--six{grid-template-columns:repeat(3,1fr)}
 .pillars--six .pillar{padding-top:clamp(1.9rem,3vw,2.8rem)}
 @media (max-width:1080px){.pillars--six{grid-template-columns:repeat(2,1fr)}}
@@ -690,7 +702,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .k-glow{fill:rgba(214,182,112,.42);stroke:none;
   animation:vitrine 5s ease-in-out infinite;animation-delay:calc(var(--i)*.7s)}
 @keyframes vitrine{0%,100%{opacity:.2}50%{opacity:.6}}
-.kiosk__specs{margin-top:clamp(2.5rem,5vw,4rem)}
+.kiosk__specs{margin-top:clamp(2rem,4vw,3.2rem)}
 @media (prefers-reduced-motion:reduce){.k-glow{animation:none;opacity:.4}}
 
 /* ─────────────────────────────────────────── brand monogram, drawn in place
