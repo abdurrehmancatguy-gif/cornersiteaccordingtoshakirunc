@@ -78,7 +78,7 @@ body::after{
   opacity:1;
   /* One tile per cycle, so the seamless repeat carries it round with no jump.
      The whole field moves together rather than any element drifting alone. */
-  animation:paper 55s linear infinite;
+  animation:paper 40s linear infinite;
 }
 @keyframes paper{from{background-position:0 0}to{background-position:0 -408px}}
 img{max-width:100%;display:block}
