@@ -468,9 +468,11 @@ ul,ol{margin:0;padding:0;list-style:none}
   border:1px solid rgba(107,78,19,.42)}
 .map .guilloche{position:absolute;inset:0;width:100%;height:100%;opacity:.45;pointer-events:none}
 .map iframe{position:relative;width:100%;height:clamp(300px,42vw,480px);border:0;display:block;
-  filter:grayscale(1) sepia(.42) contrast(.92) brightness(1.06);
+  /* the embed ships near-white, which on a limestone page reads as a hole.
+     Toned down and warmed so it sits as a plate rather than a light box. */
+  filter:grayscale(1) sepia(.55) contrast(.88) brightness(.8) saturate(1.25);
   transition:filter .7s var(--ease)}
-.map:hover iframe{filter:grayscale(.55) sepia(.22) contrast(.96) brightness(1.02)}
+.map:hover iframe{filter:grayscale(.35) sepia(.22) contrast(.95) brightness(.95) saturate(1.1)}
 .map figure,.map{position:relative}
 .map{box-shadow:0 1px 0 rgba(255,255,255,.85),0 30px 60px -46px rgba(84,62,20,.45)}
 
