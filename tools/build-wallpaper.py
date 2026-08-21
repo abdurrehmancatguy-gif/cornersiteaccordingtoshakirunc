@@ -40,11 +40,11 @@ for (cx, cy) in [(0, H/2), (W, H/2), (W/2, 0), (W/2, H)]:
 
 svg = f'''<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}">
 <style>
- .m{{fill:none;stroke:#6B4E13;stroke-width:2.1;opacity:.34}}
- .i{{fill:#6B4E13;opacity:.11;stroke:#6B4E13;stroke-width:1.1;stroke-opacity:.28}}
- .l{{fill:none;stroke:#6B4E13;stroke-width:1.3;opacity:.20}}
- .d{{fill:none;stroke:#6B4E13;stroke-width:1.5;opacity:.30}}
- .d2{{fill:#6B4E13;opacity:.26}}
+ .m{{fill:none;stroke:#6B4E13;stroke-width:1.8;opacity:.20}}
+ .i{{fill:#6B4E13;opacity:.06;stroke:#6B4E13;stroke-width:1;stroke-opacity:.16}}
+ .l{{fill:none;stroke:#6B4E13;stroke-width:1.1;opacity:.12}}
+ .d{{fill:none;stroke:#6B4E13;stroke-width:1.3;opacity:.18}}
+ .d2{{fill:#6B4E13;opacity:.15}}
 </style>
 {chr(10).join(parts)}
 </svg>

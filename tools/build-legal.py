@@ -50,7 +50,7 @@ SHELL = '''<!DOCTYPE html>
       <a href="index.html#contact">Contact</a>
       <a href="{other_href}">{other_label}</a>
     </nav>
-    <a class="btn btn--ghost nav__cta" href="index.html#contact" data-magnetic>Enquire</a>
+    <a class="btn btn--ghost nav__cta" href="index.html#contact">Enquire</a>
   </div>
   <div class="nav__rule" aria-hidden="true"><span></span></div>
 </header>

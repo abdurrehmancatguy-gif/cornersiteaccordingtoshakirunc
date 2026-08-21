@@ -78,13 +78,13 @@ body::after{
   content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
   background-image:url("../img/damask.svg");
   background-size:340px 408px;
-  opacity:1;
+  opacity:.92;
   /* One tile per cycle, so the seamless repeat carries it round with no jump.
      The whole field moves together rather than any element drifting alone. */
-  animation:paper 34s linear infinite;
+  animation:paper 22s linear infinite;
 }
-/* one whole tile on each axis, so a diagonal path still loops clean */
-@keyframes paper{from{background-position:0 0}to{background-position:-340px -408px}}
+/* one whole tile sideways, so the horizontal travel loops without a seam */
+@keyframes paper{from{background-position:0 0}to{background-position:-340px 0}}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -179,7 +179,6 @@ ul,ol{margin:0;padding:0;list-style:none}
   font-size:.73rem;text-transform:uppercase;letter-spacing:.22em;
   border:1px solid transparent;position:relative;overflow:hidden;
   transition:color .45s var(--ease),border-color .45s var(--ease),background .45s var(--ease);
-  will-change:transform;
 }
 .btn--lg{--pad:1.25rem 2.6rem;font-size:.78rem}
 .btn--fill{color:#F4EAD2;background:var(--ink)}

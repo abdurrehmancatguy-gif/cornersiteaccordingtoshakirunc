@@ -162,14 +162,6 @@
       el.addEventListener('mouseleave', () => cur.classList.remove('hot'));
     });
 
-    $$('[data-magnetic]').forEach(el => {
-      el.addEventListener('mousemove', e => {
-        const r = el.getBoundingClientRect();
-        el.style.transform =
-          `translate(${(e.clientX - r.left - r.width / 2) * 0.22}px, ${(e.clientY - r.top - r.height / 2) * 0.34}px)`;
-      });
-      el.addEventListener('mouseleave', () => { el.style.transform = ''; });
-    });
   }
 
   /* ── 8. enquiry form ───────────────────────────────────────────────────
