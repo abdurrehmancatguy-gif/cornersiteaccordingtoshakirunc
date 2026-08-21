@@ -70,14 +70,17 @@ SHELL = '''<!DOCTYPE html>
 </main>
 
 <footer class="foot">
-  <div class="wrap foot__inner">
+  <div class="wrap foot__top">
     <a class="lockplate" href="index.html" aria-label="BGS Corner"><span class="foot__lockup"></span></a>
     <nav class="foot__links" aria-label="Footer">
-      <a href="index.html#who">Who We Are</a><a href="index.html#what">What We Do</a>
-      <a href="index.html#products">Our Products</a><a href="index.html#contact">Contact</a>
+      <a href="index.html#trade">General Trade</a><a href="index.html#kiosks">Kiosks</a>
+      <a href="index.html#products">Products</a><a href="index.html#contact">Contact</a>
       <a href="terms.html">Terms</a><a href="privacy.html">Privacy</a>
     </nav>
-    <p class="foot__legal"><span id="year">2026</span> &copy; B G S Corner General Trading L.L.C. &middot; Dubai, U.A.E.</p>
+  </div>
+  <div class="wrap foot__base">
+    <p class="foot__legal"><span id="year">2026</span> &copy; B G S Corner General Trading L.L.C.</p>
+    <p class="foot__where">Riggat Al Buteen &middot; Deira, Dubai &middot; U.A.E.</p>
   </div>
 </footer>
 

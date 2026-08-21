@@ -81,9 +81,10 @@ body::after{
   opacity:1;
   /* One tile per cycle, so the seamless repeat carries it round with no jump.
      The whole field moves together rather than any element drifting alone. */
-  animation:paper 40s linear infinite;
+  animation:paper 34s linear infinite;
 }
-@keyframes paper{from{background-position:0 0}to{background-position:0 -408px}}
+/* one whole tile on each axis, so a diagonal path still loops clean */
+@keyframes paper{from{background-position:0 0}to{background-position:-340px -408px}}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button,input,select,textarea{font:inherit;color:inherit}
@@ -480,15 +481,26 @@ ul,ol{margin:0;padding:0;list-style:none}
 .map{box-shadow:0 1px 0 rgba(255,255,255,.85),0 30px 60px -46px rgba(84,62,20,.45)}
 
 /* ─────────────────────────────────────────────────────────── footer */
-.foot{border-top:1px solid var(--rule);padding-block:clamp(3rem,6vw,5rem);
+.foot{border-top:1px solid var(--rule);padding-block:clamp(2.4rem,4.5vw,3.6rem);
   background:rgba(246,240,225,.55)}
-.foot__inner{display:grid;grid-template-columns:auto 1fr auto;gap:2rem;align-items:center}
-.foot__links{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+.foot__top{display:flex;align-items:center;justify-content:space-between;
+  gap:clamp(1.5rem,4vw,3rem);flex-wrap:wrap}
+.lockplate{padding:.75rem 1.15rem}
+.foot__lockup{width:min(10.5rem,34vw)}
+.foot__links{display:flex;gap:clamp(1rem,2.2vw,1.9rem);flex-wrap:wrap;justify-content:flex-end}
 .foot__links a{font-size:.66rem;text-transform:uppercase;letter-spacing:.2em;color:var(--ink-faint);
-  transition:color .4s}
-.foot__links a:hover{color:var(--gold-deep)}
-.foot__legal{font-size:.62rem;text-transform:uppercase;letter-spacing:.18em;color:var(--ink-faint);
-  text-align:right}
+  transition:color .4s;white-space:nowrap}
+.foot__links a:hover{color:var(--jade)}
+.foot__base{display:flex;align-items:baseline;justify-content:space-between;
+  gap:1rem;flex-wrap:wrap;
+  margin-top:clamp(1.6rem,3vw,2.4rem);padding-top:clamp(1.1rem,2vw,1.5rem);
+  border-top:1px solid var(--rule)}
+.foot__legal,.foot__where{font-size:.62rem;text-transform:uppercase;letter-spacing:.18em;
+  color:var(--ink-faint)}
+@media (max-width:760px){
+  .foot__top,.foot__base{flex-direction:column;align-items:center;text-align:center}
+  .foot__links{justify-content:center}
+}
 
 /* ─────────────────────────────────────────────────────────── responsive */
 /* Between the two-column breakpoint and about 1250 the text column is narrow
@@ -713,7 +725,6 @@ ul,ol{margin:0;padding:0;list-style:none}
 .k-glow{fill:rgba(214,182,112,.42);stroke:none;
   animation:vitrine 5s ease-in-out infinite;animation-delay:calc(var(--i)*.7s)}
 @keyframes vitrine{0%,100%{opacity:.2}50%{opacity:.6}}
-.kiosk__specs{margin-top:clamp(2rem,4vw,3.2rem)}
 @media (prefers-reduced-motion:reduce){.k-glow{animation:none;opacity:.4}}
 
 /* ─────────────────────────────────────────── brand monogram, drawn in place
