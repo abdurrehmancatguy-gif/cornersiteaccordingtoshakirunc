@@ -207,7 +207,18 @@
     });
   }
 
-  /* ── 9. odds and ends ─────────────────────────────────────────────────── */
+  /* ── 9. the kiosk film ─────────────────────────────────────────────────
+     Autoplay is muted and inline, but some browsers still hold off until the
+     element is on screen, so nudge it when it arrives. */
+  const film = $('.kioskvid');
+  if (film) {
+    const play = () => film.play().catch(() => {});
+    new IntersectionObserver((es) => {
+      for (const e of es) e.isIntersecting ? play() : film.pause();
+    }, { threshold: 0.2 }).observe(film);
+  }
+
+  /* ── 10. odds and ends ────────────────────────────────────────────────── */
   const year = $('#year');
   if (year) year.textContent = new Date().getFullYear();
 

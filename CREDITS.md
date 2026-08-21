@@ -34,6 +34,13 @@ Corner product. The six pieces in the collection are named for forms the stock
 photography does not show. Replace them with your own product shots before this
 goes to customers.
 
+## Video
+
+`assets/video/kiosk.*` is BGS Corner's own footage of a completed unit,
+supplied by the client. Re-encoded from an 18.6 MB 2160x3840 ProRes-era .mov
+down to 720x1280 WebM and MP4 at roughly 700 KB each, audio stripped since it
+plays muted, plus a poster frame.
+
 ## Generated artwork
 
 The hero bottle and the kiosk elevation are both drawn by
