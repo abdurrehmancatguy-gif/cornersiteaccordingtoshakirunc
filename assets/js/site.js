@@ -200,15 +200,12 @@
   }
 
   /* ── 9. the kiosk film ─────────────────────────────────────────────────
-     Plays once and holds on its last frame. Once it has ended it stays there:
-     scrolling away and back must not start it over. */
-  const film = $('.kioskvid');
+     It loops in the hero: a frozen banner reads as a broken page rather than
+     as a deliberate still. The observer only pauses it off screen. */
+  const film = $('.herovid');
   if (film) {
     new IntersectionObserver((es) => {
-      for (const e of es) {
-        if (film.ended) continue;
-        e.isIntersecting ? film.play().catch(() => {}) : film.pause();
-      }
+      for (const e of es) e.isIntersecting ? film.play().catch(() => {}) : film.pause();
     }, { threshold: 0.05 }).observe(film);
   }
 

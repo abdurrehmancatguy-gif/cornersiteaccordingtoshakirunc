@@ -39,9 +39,8 @@ goes to customers.
 `assets/video/kiosk.*` is BGS Corner's own footage of a completed unit,
 supplied by the client. Re-encoded from an 18.6 MB 2160x3840 ProRes-era .mov
 down to a single 720x1280 MP4 of roughly 740 KB, audio stripped since it plays
-muted, plus a poster frame. It appears twice: in the kiosk column, where it plays once and holds on its
-last frame, and behind the hero monogram, where it loops under a scrim at low
-opacity. WebM was dropped: it saved 26 KB and introduced a
+muted, plus a poster frame. It carries the hero, at the footage own 9:16 so nothing crops, looping rather
+than holding: a frozen banner reads as a broken page. WebM was dropped: it saved 26 KB and introduced a
 second code path for no benefit.
 
 ## Generated artwork

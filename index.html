@@ -11,7 +11,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600;1,700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/css/site.css?v=4660f0c1">
+<link rel="stylesheet" href="assets/css/site.css?v=7cc127dd">
 </head>
 <body>
 
@@ -86,21 +86,15 @@
     </div>
 
     <figure class="hero__art">
-      <div class="artframe artframe--hero artframe--art" data-parallax="0.04">
+      <div class="artframe artframe--hero artframe--video drawn" data-parallax="0.04">
         <video class="herovid" autoplay muted loop playsinline preload="auto"
-               poster="assets/video/kiosk-poster.jpg" aria-hidden="true" tabindex="-1">
+               poster="assets/video/kiosk-poster.jpg"
+               aria-label="A BGS Corner kiosk: lit sign over glass vitrines of fragrance, eyewear and accessories.">
           <source src="assets/video/kiosk.mp4" type="video/mp4">
         </video>
-        <span class="herovid__scrim" aria-hidden="true"></span>
-        <canvas class="guilloche" data-guilloche data-seed="0" aria-hidden="true"></canvas>
-        <div class="markart" role="img"
-             aria-label="The BGS Corner monogram, drawn in gold.">
-          <span class="markart__outline" aria-hidden="true"></span>
-          <span class="markart__fill" aria-hidden="true"></span>
-        </div>
       </div>
       <figcaption class="art__cap reveal" data-delay="3">
-        <span>BGS CORNER</span><i></i><span>General Trading</span>
+        <span>Our kiosk</span><i></i><span>Deira, Dubai</span>
       </figcaption>
     </figure>
   </div>
@@ -195,12 +189,12 @@
 
   <div class="concept wrap">
     <div class="concept__stick">
-      <div class="artframe artframe--tall artframe--video drawn">
-        <video class="kioskvid" autoplay muted playsinline preload="auto"
-               poster="assets/video/kiosk-poster.jpg"
-               aria-label="A BGS Corner retail unit: glass and brass vitrines over white lacquer counters.">
-          <source src="assets/video/kiosk.mp4" type="video/mp4">
-        </video>
+      <div class="artframe artframe--tall artframe--art">
+        <canvas class="guilloche" data-guilloche data-seed="0" aria-hidden="true"></canvas>
+        <div class="markart" role="img" aria-label="The BGS Corner monogram, drawn in gold.">
+          <span class="markart__outline" aria-hidden="true"></span>
+          <span class="markart__fill" aria-hidden="true"></span>
+        </div>
       </div>
       <div class="readout" aria-hidden="true">
         <span class="readout__val" data-readout-val>01</span>
@@ -537,6 +531,6 @@
 </a>
 
 <script src="assets/js/graphics.js?v=ef9fedd5" defer></script>
-<script src="assets/js/site.js?v=2a5f6c06" defer></script>
+<script src="assets/js/site.js?v=fc0c145e" defer></script>
 </body>
 </html>

@@ -261,7 +261,8 @@ ul,ol{margin:0;padding:0;list-style:none}
   background:linear-gradient(180deg,var(--panel-lit),var(--panel));
   transform-origin:bottom;transition:transform 1.5s var(--ease),opacity 1.5s var(--ease)}
 .artframe.drawn::before{transform:scaleY(0);opacity:0}
-.artframe--hero,.artframe--tall,.artframe--card{aspect-ratio:4/5}
+.artframe--tall,.artframe--card{aspect-ratio:4/5}
+.artframe--hero:not(.artframe--video){aspect-ratio:4/5}
 .artframe--wide{aspect-ratio:16/7.2}
 .artframe--case{aspect-ratio:5/4}
 .guilloche{position:absolute;inset:0;width:100%;height:100%;opacity:.45;pointer-events:none}
@@ -353,7 +354,7 @@ ul,ol{margin:0;padding:0;list-style:none}
      sliding under the nav while the last step is still being read */
   padding-bottom:clamp(2rem,14vh,9rem)}
 .concept__stick{position:sticky;top:max(12vh,5rem)}
-.concept__stick .artframe:not(.artframe--video){max-height:56vh}
+.concept__stick .artframe{max-height:56vh}
 .readout{margin-top:1.6rem;display:flex;align-items:baseline;gap:.8rem;
   border-top:1px solid var(--rule);padding-top:1.3rem}
 .readout__val{font-size:clamp(2.6rem,4.5vw,4rem);line-height:1;
@@ -778,17 +779,10 @@ ul,ol{margin:0;padding:0;list-style:none}
    use, so nothing is cropped and there are no bars either. Height drives the
    box; width follows from the ratio and the frame centres in its column. */
 .artframe--video{background:#15110B;aspect-ratio:9/16;
-  height:min(62vh,34rem);width:auto;max-width:100%;margin-inline:auto}
-.kioskvid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;
-  opacity:0;transform:scale(1.04);
-  transition:opacity 1.4s var(--ease),transform 2s var(--ease)}
-.artframe--video.drawn .kioskvid{opacity:1;transform:none}
+  height:min(66vh,38rem);width:auto;max-width:100%;margin-inline:auto}
 
-/* the film sits behind the monogram, held well back so the gold still reads */
-.herovid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;
-  opacity:0;transition:opacity 1.8s var(--ease) .3s;
-  filter:grayscale(.45) sepia(.4) contrast(.88) brightness(.95)}
-.artframe.drawn .herovid{opacity:.32}
-.herovid__scrim{position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(168deg,rgba(250,245,233,.62),rgba(240,232,213,.74))}
-@media (prefers-reduced-motion:reduce){.herovid{display:none}}
+/* the film carries the hero now, at the footage's own ratio so nothing crops */
+.herovid{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;
+  opacity:0;transform:scale(1.03);
+  transition:opacity 1.4s var(--ease),transform 2s var(--ease)}
+.artframe--video.drawn .herovid{opacity:1;transform:none}
