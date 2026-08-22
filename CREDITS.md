@@ -1,5 +1,14 @@
 # Credits
 
+## Holding page
+
+ is cropped from BGS Corner's own campaign artwork,
+supplied by the client. Everything else on the holding page is CSS.
+
+---
+
+What follows applies to the archived site under .
+
 ## Photography
 
 All photographs are stock from [Pexels](https://www.pexels.com), used under the

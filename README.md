@@ -1,10 +1,8 @@
-# BGS Corner
+# BGS CORNER
 
-Website for **BGS Corner** — a general trading company in Dubai, currently focused on
-oud, attar and fine perfume, plus retail kiosks.
+A holding page for **BGS Corner** — a general trading company in Deira, Dubai.
 
-Hand-written HTML / CSS / JS. No framework, no build step, no dependencies.
-Open `index.html`, or serve the folder statically.
+Hand-written HTML and CSS. No framework, no build step, no dependencies.
 
 ```bash
 python3 -m http.server 4173
@@ -13,52 +11,38 @@ python3 -m http.server 4173
 ## Layout
 
 ```
-index.html
+index.html            the holding page
 assets/
-  css/site.css      styling
-  js/graphics.js    the guilloche medallions
-  js/site.js        motion, scroll behaviour, form
-  brand/            logo masks (white ink + alpha, tinted via CSS mask-image)
-  img/              photography + the damask wallpaper
-tools/
-  build-brand.py    regenerates brand/ from the source logo PDF
-  build-assets.py    crops and compresses the photography
-  build-wallpaper.py generates the damask tile
-  build-legal.py     renders terms.html and privacy.html
-  shot.mjs           full-page screenshots via the Chrome DevTools Protocol
+  css/soon.css        its styling
+  brand/              logo masks, tinted gold via CSS mask-image
+  img/still.jpg       the still life, lifted from the campaign artwork
+archive/              the full site, preserved and still working
 ```
 
-## Artwork
+## The holding page
 
-- **The hero bottle** is drawn, not photographed. `heroBottle()` builds one
-  closed silhouette so a single highlight can travel the whole contour without
-  a seam; lengths are measured with `getTotalLength()` at build time.
-- **Photography** elsewhere is stock from Pexels — see `CREDITS.md`. It is
-  placeholder imagery, not BGS Corner product.
-- **The wallpaper** (`assets/img/damask.svg`) is a generated seamless damask;
-  rebuild it with `tools/build-wallpaper.py`.
-- **The guilloche medallions** are engine-turned rosettes drawn at runtime by
-  `assets/js/graphics.js` — circles whose centres ride a circle, baked once per
-  size then composited per frame.
-- **The brand mark** is extracted from the supplied logo PDF by
-  `tools/build-brand.py`, as a white-ink alpha mask so CSS can tint it. It is
-  always placed on a dark plate so it reads.
+Everything except the photograph is live text: the wordmark, the headline and
+the contact bar are HTML, tinted with a gold gradient through
+`background-clip`, so they stay crisp at any size and are selectable and
+searchable. Only the decanter, flacon and burner are an image, cropped out of
+the campaign artwork clear of its own type and contact pill, and feathered
+with a CSS mask rather than a baked fade so the edges dissolve into the
+spotlight behind rather than into a flat black that shows a seam.
 
-## Legal pages
+The silk falls and the spotlight are CSS gradients, not photography.
 
-`terms.html` and `privacy.html` are generated from `tools/terms.txt` and
-`tools/privacy.txt` by `tools/build-legal.py`. Edit the text files, re-run the
-script — do not hand-edit the HTML.
+## The archive
+
+The previous site is intact under `archive/` and still runs — open
+`archive/index.html`, or reach it at `/archive/` when served. Its own assets
+and build scripts moved with it, so the relative paths still resolve and
+nothing in it needs changing.
+
+To put it back, move the contents of `archive/` up a level and restore the
+holding page's `index.html` to a different name.
 
 ## Before launch
 
-Contact details, hours and the map carry the real values taken from
-bgscorner.com. Two things still need a decision:
-
-1. **Terms clause 7** still reads "within [7/14/30] days" — pick the number.
-2. **The photography is stock.** Swap `assets/img/piece-*.jpg` for your own
-   product shots before this goes to customers; the six pieces are named for
-   forms the stock images do not show.
-
-The form posts in the Netlify Forms shape and falls back to opening a mail
-draft if the host is not handling forms.
+The returns clause in `archive/tools/terms.txt` still reads "the period
+confirmed to you at the time of purchase". Set the actual figure and re-run
+`archive/tools/build-legal.py`.
