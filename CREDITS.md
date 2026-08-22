@@ -8,8 +8,8 @@ attribution required. Credited here anyway.
 
 | File | Pexels photo | Checked |
 |---|---|---|
-| `cat-vapes.jpg` | [5387722](https://www.pexels.com/photo/5387722/) | no label |
-| `cat-pods.jpg` | [11587602](https://www.pexels.com/photo/11587602/) | no label |
+| `cat-watches.jpg` | [25682459](https://www.pexels.com/photo/25682459/) | no label |
+| `cat-wallets.jpg` | [13225343](https://www.pexels.com/photo/13225343/) | no label |
 | `cat-earbuds.jpg` | [30981655](https://www.pexels.com/photo/30981655/) | no label |
 | `cat-headphones.jpg` | [8858287](https://www.pexels.com/photo/8858287/) | no label |
 | `cat-powerbanks.jpg` | [34338614](https://www.pexels.com/photo/34338614/) | no label |
@@ -39,7 +39,9 @@ goes to customers.
 `assets/video/kiosk.*` is BGS Corner's own footage of a completed unit,
 supplied by the client. Re-encoded from an 18.6 MB 2160x3840 ProRes-era .mov
 down to a single 720x1280 MP4 of roughly 740 KB, audio stripped since it plays
-muted, plus a poster frame. It plays once and holds on its last frame. WebM was dropped: it saved 26 KB and introduced a
+muted, plus a poster frame. It appears twice: in the kiosk column, where it plays once and holds on its
+last frame, and behind the hero monogram, where it loops under a scrim at low
+opacity. WebM was dropped: it saved 26 KB and introduced a
 second code path for no benefit.
 
 ## Generated artwork

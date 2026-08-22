@@ -18,8 +18,8 @@ os.makedirs(OUT, exist_ok=True)
 # (pexels id, output name, target aspect w/h, output width)
 JOBS = [
     # trade categories, in carousel order
-    ('5387722',  'cat-vapes.jpg',        4/5, 760),
-    ('11587602', 'cat-pods.jpg',         4/5, 760),
+    ('25682459', 'cat-watches.jpg',      4/5, 760),
+    ('13225343', 'cat-wallets.jpg',      4/5, 760),
     ('30981655', 'cat-earbuds.jpg',      4/5, 760),
     ('8858287',  'cat-headphones.jpg',   4/5, 760),
     ('34338614', 'cat-powerbanks.jpg',   4/5, 760),
