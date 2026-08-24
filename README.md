@@ -41,6 +41,21 @@ nothing in it needs changing.
 To put it back, move the contents of `archive/` up a level and restore the
 holding page's `index.html` to a different name.
 
+## Contact bar
+
+Phone, email and Instagram are live links. The web address is set as text, not
+a link: bgscorner.com returns 404 on every variant, and this page is meant to
+sit at that address, so a link would either break or loop.
+
+"Google Business" points at the verified listing by CID:
+
+    https://maps.google.com/?cid=1750164914419872476
+
+That form is permanent and resolves to BGS Corner General Trading L.L.C. The
+share.google short link it was derived from is not: it redirects to a Search
+results page carrying session ids and utm_ parameters, and tripped a bot check
+when followed. The archived site's map embed uses the same CID.
+
 ## Before launch
 
 The returns clause in `archive/tools/terms.txt` still reads "the period
