@@ -45,7 +45,7 @@ holding page's `index.html` to a different name.
 
 On a phone the page reads copy, then the still life, then the details.
 
-Phone, email, rewards and Instagram are live links. The web address is set as text, not
+Phone, email and Instagram are live links. The web address is set as text, not
 a link: bgscorner.com returns 404 on every variant, and this page is meant to
 sit at that address, so a link would either break or loop.
 
@@ -55,11 +55,10 @@ sit at that address, so a link would either break or loop.
 
 That form is permanent and resolves to BGS Corner General Trading L.L.C.
 
-The rewards link points at bgscorner.com/en/rewards, which 404s while the
-domain is down. The
-share.google short link it was derived from is not: it redirects to a Search
-results page carrying session ids and utm_ parameters, and tripped a bot check
-when followed. The archived site's map embed uses the same CID.
+The Google Business link uses the CID form above rather than the
+share.google short link it was derived from: that short link redirects to a
+Search results page carrying session ids and utm_ parameters, and tripped a bot
+check when followed. The archived site's map embed uses the same CID.
 
 ## Before launch
 
