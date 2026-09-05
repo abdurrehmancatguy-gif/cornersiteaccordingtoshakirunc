@@ -109,9 +109,9 @@ a{color:inherit;text-decoration:none}
 
 /* ── contact bar ─────────────────────────────────────────────────────────── */
 .bar{position:fixed;left:50%;bottom:clamp(1rem,3vh,2.2rem);translate:-50% 0;z-index:20;
-  display:flex;align-items:center;gap:clamp(.55rem,1.35vw,1.15rem);flex-wrap:wrap;
+  display:flex;align-items:center;gap:clamp(.55rem,1.35vw,1.15rem);flex-wrap:nowrap;
   justify-content:center;
-  width:min(86rem,calc(100% - 2rem));
+  width:min(max-content,calc(100% - 2rem));
   padding:clamp(.7rem,1.6vh,1rem) clamp(1rem,3vw,2rem);
   border:1px solid rgba(201,162,74,.42);border-radius:clamp(1.1rem,1.6vw,1.5rem);
   background:rgba(9,7,4,.72);backdrop-filter:blur(9px)}
@@ -128,6 +128,11 @@ a{color:inherit;text-decoration:none}
 .bar > i{display:block;width:1px;height:1.4rem;background:rgba(201,162,74,.34)}
 
 /* ── responsive ──────────────────────────────────────────────────────────── */
+/* Below the widest desktops the single row would crowd the viewport edges, so
+   let it wrap again rather than clip or overflow. */
+@media (max-width:1024px){
+  .bar{flex-wrap:wrap}
+}
 @media (max-width:900px){
   .stage{grid-template-columns:1fr;justify-items:center;
     padding-bottom:clamp(1.5rem,4vh,2.5rem)}
